@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق إدارة متجر - صفحتك الجاهزة خلال 5 دقائق</title>
+    <meta name="description" content="أداة بسيطة لعرض منتجات متجرك عبر رابط واحد فقط، بدون تعقيد أو تكاليف عالية">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐺</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2d74da;
+            --accent: #f6ad55;
+            --light: #f7fafc;
+            --dark: #2d3748;
+            --success: #38a169;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.8;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--primary);
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            transition: var(--transition);
+        }
+        
+        .logo:hover .logo-icon {
+            transform: rotate(15deg);
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+            background: rgba(45, 116, 218, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 60px;
+            background: linear-gradient(135deg, #1a365d 0%, #2d74da 100%);
+            color: white;
+            text-align: center;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 60px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #1a365d;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(246, 173, 85, 0.3);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--accent);
+            display: block;
+            font-size: 2.5rem;
+            margin-top: 10px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            background: var(--accent);
+            color: #1a365d;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(246, 173, 85, 0.4);
+            border: 2px solid var(--accent);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(246, 173, 85, 0.5);
+        }
+        
+        /* Features Grid */
+        .features {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 35px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 32px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* App Preview */
+        .app-preview {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 40px;
+            margin: 60px 0;
+        }
+        
+        .preview-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .preview-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .preview-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+        
+        .preview-content ul {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .preview-content li {
+            padding: 12px 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .preview-content li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .app-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .app-screenshot {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            transition: var(--transition);
+        }
+        
+        .app-screenshot:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .price-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 50px;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 0 auto;
+            border: 3px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-card::before {
+            content: 'عرض خاص';
+            position: absolute;
+            top: 20px;
+            left: -50px;
+            background: var(--accent);
+            color: #1a365d;
+            padding: 8px 60px;
+            transform: rotate(-45deg);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .price {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 20px 0;
+            line-height: 1;
+        }
+        
+        .price span {
+            font-size: 1.5rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .old-price {
+            color: #a0aec0;
+            text-decoration: line-through;
+            font-size: 1.8rem;
+            margin-left: 15px;
+        }
+        
+        .price-note {
+            color: var(--success);
+            font-weight: 600;
+            margin: 20px 0;
+            font-size: 1.1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            border-radius: 40px 40px 0 0;
+            margin-top: 80px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo .logo-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+        }
+        
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 8px 0;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-right: 10px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: white;
+                width: 100%;
+                box-shadow: var(--shadow);
+                padding: 20px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h1 span {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .preview-container {
+                flex-direction: column;
+            }
+            
+            .price {
+                font-size: 3rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-paw"></i>
+                </div>
+                <div class="logo-text">الديب</div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#features">المميزات</a></li>
+                    <li><a href="#app">عن التطبيق</a></li>
+                    <li><a href="#pricing">السعر</a></li>
+                    <li><a href="#cta">ابدأ الآن</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge animate">✨ صُمّم خصيصًا لأصحاب المتاجر</div>
+            <h1 class="animate">
+                تطبيق إدارة متجر
+                <span>صفحتك الجاهزة خلال 5 دقائق</span>
+            </h1>
+            <p class="animate delay-1">
+                أداة بسيطة تتيح لك إنشاء صفحة لمنتجات متجرك خلال دقائق، 
+                ثم مشاركتها مع الزبائن عبر رابط واحد فقط.
+            </p>
+            <a href="https://admin.aldeebtech.de/" target="_blank" class="cta-button animate delay-2">
+                <i class="fas fa-rocket"></i>
+                ابدأ الآن مجانًا
+            </a>
+            <p class="animate delay-3" style="margin-top: 20px; font-size: 0.95rem; opacity: 0.9;">
+                بدون برمجة • بدون إعدادات معقدة • بدون مصاريف عالية
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title animate">ما الذي تحصل عليه؟</h2>
+            <div class="features-grid">
+                <div class="feature-card animate">
+                    <div class="feature-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>إضافة المنتجات</h3>
+                    <p>أضف منتجاتك بسهولة مع صور وأسعار ووصف كامل</p>
+                </div>
+                
+                <div class="feature-card animate delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <h3>تنظيم الفئات</h3>
+                    <p>نظم منتجاتك ضمن فئات واضحة للتصفح السهل</p>
+                </div>
+                
+                <div class="feature-card animate delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>رابط واحد</h3>
+                    <p>احصل على رابط واحد تشاركه مع كل زبائنك</p>
+                </div>
+                
+                <div class="feature-card animate delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>يعمل على الهاتف</h3>
+                    <p>صفحة متجرك تعمل على جميع الأجهزة بنقرة واحدة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview -->
+    <section class="app-preview" id="app">
+        <div class="container">
+            <div class="preview-container">
+                <div class="preview-content animate">
+                    <h2>لماذا هذا التطبيق مختلف؟</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 25px; color: var(--dark);">
+                        لأنه بُني من وجهة نظر صاحب متجر حقيقي. لا نضيّع وقتك ولا نطلب إعدادات طويلة.
+                    </p>
+                    
+                    <ul>
+                        <li>💼 مناسب لأي مشروع صغير أو متجر</li>
+                        <li>⚡ يبدأ العمل خلال 5 دقائق فقط</li>
+                        <li>📱 يعرض منتجاتك بطريقة احترافية</li>
+                        <li>🔗 رابط واحد لكل منتجاتك</li>
+                        <li>🎯 لا يحتاج خبرة تقنية</li>
+                        <li>💳 سعر واضح ومحدد</li>
+                    </ul>
+                    
+                    <div style="margin-top: 40px; padding: 25px; background: white; border-radius: var(--radius); box-shadow: var(--shadow);">
+                        <p style="font-size: 1.1rem; color: var(--primary); font-weight: 600;">
+                            <i class="fas fa-lightbulb" style="color: var(--accent); margin-left: 10px;"></i>
+                            بدل أن تشرح لزبائنك ماذا تبيع… أرسل لهم رابط متجرك.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="app-image animate delay-1">
+                    <div style="background: white; padding: 25px; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 30px;">
+                        <h3 style="color: var(--primary); margin-bottom: 15px;">رابط التطبيق:</h3>
+                        <a href="https://admin.aldeebtech.de/" target="_blank" style="display: block; padding: 15px; background: var(--light); border-radius: 10px; color: var(--secondary); text-decoration: none; font-weight: 600; border: 2px dashed var(--secondary); text-align: center; font-size: 1.1rem;">
+                            https://admin.aldeebtech.de/
+                            <i class="fas fa-external-link-alt" style="margin-right: 10px;"></i>
+                        </a>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 25px; border-radius: var(--radius);">
+                        <h3 style="margin-bottom: 15px;">كيف تبدأ؟</h3>
+                        <ol style="text-align: right; padding-right: 20px;">
+                            <li style="margin-bottom: 10px;">ادخل الرابط أعلاه</li>
+                            <li style="margin-bottom: 10px;">أضف منتجاتك الأولى</li>
+                            <li style="margin-bottom: 10px;">احصل على رابط متجرك</li>
+                            <li>شارك الرابط مع زبائنك</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title animate">سعر بسيط وواضح</h2>
+            <div class="price-card animate delay-1">
+                <h3 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 20px;">الباقة السنوية</h3>
+                <div class="price">
+                    15 <span>يورو</span>
+                    <span class="old-price">50 يورو</span>
+                </div>
+                <p class="price-note">توفير 70% - سعر التأسيس فقط</p>
+                <p style="color: var(--dark); margin-bottom: 30px; font-size: 1.1rem;">
+                    دفعة واحدة سنوية • تجديد تلقائي • كل المميزات متاحة
+                </p>
+                <a href="https://admin.aldeebtech.de/" target="_blank" class="cta-button" style="display: inline-flex;">
+                    ابدأ الآن
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+            
+            <div style="max-width: 600px; margin: 40px auto 0; padding: 25px; background: #f0f9ff; border-radius: var(--radius);" class="animate delay-2">
+                <h4 style="color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-info-circle" style="color: var(--secondary);"></i>
+                    ملاحظة مهمة
+                </h4>
+                <p style="color: var(--dark);">
+                    التطبيق حاليًا في مرحلة تجريبية، ونعمل على تطويره وتحسينه باستمرار 
+                    بناءً على ملاحظات المستخدمين. قد نضيف ميزات جديدة أو نعدّل السعر 
+                    عند الانتقال إلى النسخة النهائية.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2 class="animate">هل جاهز للبدء؟</h2>
+            <p class="animate delay-1">
+                تطبيق إدارة متجر صُمّم ليكون الحل المثالي لأصحاب المشاريع الصغيرة 
+                الذين يريدون طريقة بسيطة وعملية لعرض منتجاتهم.
+            </p>
+            <a href="https://admin.aldeebtech.de/" target="_blank" class="cta-button animate delay-2" style="background: var(--accent); color: #1a365d;">
+                <i class="fas fa-store"></i>
+                أنشئ متجرك الآن
+            </a>
+            <p class="animate delay-3" style="margin-top: 30px; font-size: 1rem; opacity: 0.9;">
+                مجاني للبداية • لا حاجة لبطاقة ائتمان
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <div style="font-size: 1.5rem; font-weight: 700;">الديب</div>
+                    </div>
+                    <p>حلول رقمية بسيطة لأصحاب المتاجر والمشاريع الصغيرة.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#features">المميزات</a></li>
+                        <li><a href="#app">عن التطبيق</a></li>
+                        <li><a href="#pricing">السعر</a></li>
+                        <li><a href="#cta">ابدأ الآن</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>التواصل</h4>
+                    <ul>
+                        <li><a href="mailto:nsem338@gmail.com">nsem338@gmail.com</a></li>
+                        <li><a href="https://admin.aldeebtech.de/" target="_blank">تطبيق إدارة متجر</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 الديب | <a href="https://admin.aldeebtech.de/" target="_blank" style="color: var(--accent); text-decoration: none;">admin.aldeebtech.de</a></p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">
+                    هذا الموقع يهدف إلى التعريف بالتطبيق فقط. الأسعار والعروض قابلة للتغيير.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        animateElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(40px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(element);
+        });
+        
+        // Highlight current section in nav
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if(scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
