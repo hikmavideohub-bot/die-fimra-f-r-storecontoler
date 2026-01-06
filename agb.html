@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شروط الاستخدام وسياسة الخصوصية - تطبيق إدارة متجر</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2d74da;
+            --accent: #f6ad55;
+            --light: #f7fafc;
+            --dark: #2d3748;
+            --success: #38a169;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.8;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--primary);
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        
+        .back-button {
+            padding: 10px 25px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .back-button:hover {
+            background: var(--secondary);
+        }
+        
+        /* Content */
+        .agb-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .section-title {
+            color: var(--primary);
+            margin: 40px 0 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+            font-size: 1.8rem;
+        }
+        
+        .section-title:first-child {
+            margin-top: 0;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-right: 4px solid var(--accent);
+        }
+        
+        .warning-box {
+            background: #fff5f5;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-right: 4px solid #fc8181;
+        }
+        
+        ul {
+            list-style: none;
+            padding-right: 20px;
+        }
+        
+        li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        
+        li:last-child {
+            border-bottom: none;
+        }
+        
+        strong {
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .footer-logo .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .agb-content {
+                padding: 25px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="logo_icon.png" alt="شعار تطبيق إدارة متجر">
+                </div>
+                <div class="logo-text">تطبيق إدارة متجر</div>
+            </a>
+            
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                العودة للصفحة الرئيسية
+            </a>
+        </div>
+    </header>
+
+    <!-- AGB Content -->
+    <div class="container">
+        <div class="agb-content">
+            <h1 class="section-title">شروط الاستخدام وسياسة الخصوصية (AGB)</h1>
+            
+            <div class="info-box">
+                <p><strong>آخر تحديث:</strong> 2024</p>
+                <p>يرجى قراءة هذه الشروط بعناية قبل استخدام تطبيق إدارة متجر.</p>
+            </div>
+            
+            <!-- معلومات المشروع -->
+            <h2 class="section-title">معلومات عن التطبيق</h2>
+            <p><strong>تطبيق إدارة متجر</strong> هو تطبيق رقمي مخصص لأصحاب المتاجر الصغيرة والمتوسطة لإدارة منتجاتهم بسهولة ومن مكان واحد.</p>
+            
+            <div class="info-box">
+                <p>يتيح التطبيق:</p>
+                <ul>
+                    <li>إضافة وتعديل وحذف المنتجات</li>
+                    <li>تنظيم المنتجات ضمن فئات</li>
+                    <li>تحديد الأسعار والأحجام</li>
+                    <li>إنشاء عروض خاصة</li>
+                    <li>تفعيل أو إيقاف المنتجات</li>
+                    <li>إنشاء صفحة متجر إلكترونية لعرض المنتجات للعملاء</li>
+                </ul>
+            </div>
+            
+            <p><strong>ملاحظة هامة:</strong> التطبيق مخصص لأصحاب المتاجر فقط. العملاء النهائيون لا يقومون بأي عمليات دفع داخل النظام.</p>
+            <p>يتم استخدام الخدمة من خلال تفعيل سنوي مدفوع، ويتم الوصول إليها بعد التسجيل في تطبيق الإدارة.</p>
+            
+            <!-- الأسعار -->
+            <h2 class="section-title">الأسعار</h2>
+            <p>يتم استخدام تطبيق إدارة متجر من خلال تفعيل سنوي.</p>
+            <ul>
+                <li><strong>مدة التفعيل:</strong> سنة واحدة</li>
+                <li><strong>التجديد:</strong> لا يوجد تجديد تلقائي</li>
+                <li><strong>إعادة التفعيل:</strong> يجب إعادة التفعيل يدويًا بعد انتهاء المدة</li>
+                <li><strong>الشفافية:</strong> يتم عرض السعر ومدة التفعيل بوضوح قبل الدفع</li>
+            </ul>
+            <div class="info-box">
+                <p><i class="fas fa-check-circle" style="color: var(--success); margin-left: 10px;"></i> لا توجد أي رسوم خفية أو التزامات مستقبلية.</p>
+            </div>
+            
+            <!-- شروط الاستخدام -->
+            <h2 class="section-title">شروط الاستخدام</h2>
+            <p>باستخدام تطبيق إدارة متجر، يوافق المستخدم على ما يلي:</p>
+            <ul>
+                <li>الخدمة رقمية ومخصصة لإدارة المنتجات والمتاجر</li>
+                <li>يتم الدفع مقابل تفعيل سنوي غير متجدد تلقائيًا</li>
+                <li>لا يتم تجديد التفعيل إلا بموافقة المستخدم</li>
+                <li>لا توجد اشتراكات شهرية أو التزامات تلقائية</li>
+                <li>المستخدم مسؤول عن المحتوى والبيانات التي يضيفها</li>
+                <li>لا تشمل الخدمة بيع منتجات مادية أو خدمات شحن</li>
+                <li>يجب على المستخدم الالتزام بالقوانين المحلية والدولية</li>
+                <li>يحق لنا تعليق الحساب في حال اكتشاف انتهاك للشروط</li>
+            </ul>
+            
+            <!-- سياسة الاسترداد -->
+            <h2 class="section-title">سياسة استرداد الأموال ⭐</h2>
+            <p>نظرًا لأن تطبيق إدارة متجر هو خدمة رقمية يتم تفعيلها مباشرة بعد الدفع، فإن سياسة الاسترداد كالتالي:</p>
+            
+            <div class="warning-box">
+                <p><strong><i class="fas fa-exclamation-triangle" style="color: #fc8181; margin-left: 10px;"></i> مهم:</strong></p>
+                <ul>
+                    <li>بعد إتمام الدفع وتفعيل الحساب، لا يتم تقديم استرداد للأموال</li>
+                    <li>لا يمكن استرداد المبلغ في حال عدم الاستخدام أو الاستخدام الجزئي</li>
+                    <li>لا يتم تقديم أي استرداد بعد انتهاء مدة التفعيل السنوية</li>
+                </ul>
+            </div>
+            
+            <p>في حال حدوث خطأ تقني مثبت يمنع استخدام الخدمة كليًا، يمكن للمستخدم التواصل معنا خلال <strong>7 أيام</strong> من تاريخ الدفع.</p>
+            <p>يتم فحص الطلب، وفي حال ثبوت المشكلة التقنية، قد يتم تقديم استرداد جزئي أو كامل حسب الحالة.</p>
+            
+            <!-- سياسة الخصوصية -->
+            <h2 class="section-title">سياسة الخصوصية</h2>
+            <p>نلتزم بحماية خصوصية المستخدمين وفق القوانين المعمول بها.</p>
+            <ul>
+                <li>يتم جمع البيانات فقط لتشغيل الخدمة وتحسين التجربة</li>
+                <li>لا يتم بيع أو مشاركة البيانات مع أطراف ثالثة لأغراض تسويقية</li>
+                <li>تتم معالجة المدفوعات عبر مزود دفع خارجي (Stripe)</li>
+                <li>لا يتم تخزين بيانات بطاقات الدفع داخل التطبيق</li>
+                <li>نستخدم تقنيات التشفير لحماية البيانات</li>
+                <li>يمكن للمستخدم طلب حذف بياناته عبر التواصل معنا</li>
+                <li>نحتفظ بالحق في تحديث سياسة الخصوصية مع إشعار المستخدمين</li>
+            </ul>
+            
+            <!-- الاتصال -->
+            <h2 class="section-title">الاتصال</h2>
+            <div class="info-box">
+                <p><strong>البريد الإلكتروني:</strong> nsem338@gmail.com</p>
+                <p><strong>الهاتف:</strong> 017623456589</p>
+                <p><strong>ساعات العمل:</strong> من الإثنين إلى الجمعة، 9 صباحًا - 5 مساءً (بتوقيت وسط أوروبا)</p>
+            </div>
+            
+            <!-- البيانات القانونية -->
+            <h2 class="section-title">البيانات القانونية (Impressum)</h2>
+            <div class="info-box">
+                <p><strong>المزود:</strong> Abdullelah Kadour</p>
+                <p><strong>العنوان:</strong> Ladenbeker Furtweg 250, 21033 Hamburg, Deutschland</p>
+                <p><strong>الهاتف:</strong> 017623456589</p>
+                <p><strong>البريد الإلكتروني:</strong> nsem338@gmail.com</p>
+                <p><strong>نوع الخدمة:</strong> برمجية رقمية (SaaS) - تفعيل سنوي بدون تجديد تلقائي</p>
+                <p><strong>رقم الضريبة:</strong> حسب القانون الألماني</p>
+                <p><strong>الهيئة التنظيمية:</strong> حسب القوانين المعمول بها في ألمانيا</p>
+            </div>
+            
+            <!-- قانونية -->
+            <h2 class="section-title">نقاط قانونية</h2>
+            <ul>
+                <li>تسري الشروط الألمانية على جميع النزاعات</li>
+                <li>مكان الاختصاص هو هامبورغ، ألمانيا</li>
+                <li>نحن لسنا جزءًا في النزاعات بين البائعين والعملاء</li>
+                <li>يحتفظ المزوف بالحق في تعديل الشروط مع إشعار مسبق</li>
+                <li>يتم حل النزاعات ودياً كخطوة أولى</li>
+            </ul>
+            
+            <div class="info-box" style="margin-top: 40px;">
+                <p><strong>ملاحظة:</strong> هذه الوثيقة مكتوبة باللغتين العربية والألمانية للتسهيل على المستخدمين. في حالة وجود أي تعارض، تكون النسخة الألمانية هي المرجعية.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-icon">
+                        <img src="logo_icon.png" alt="شعار تطبيق إدارة متجر" style="width: 40px; height: 40px;">
+                    </div>
+                    <div style="font-size: 1.5rem; font-weight: 700;">تطبيق إدارة متجر</div>
+                </div>
+                <div>
+                    <p>حلول رقمية بسيطة لأصحاب المتاجر والمشاريع الصغيرة.</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 تطبيق إدارة متجر | <a href="index.html" style="color: var(--accent); text-decoration: none;">العودة للصفحة الرئيسية</a></p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">
+                    جميع الحقوق محفوظة. شروط الاستخدام قابلة للتحديث.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
