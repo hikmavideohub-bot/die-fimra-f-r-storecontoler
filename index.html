@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تطبيق إدارة متجر - صفحتك الجاهزة خلال 5 دقائق</title>
     <meta name="description" content="أداة بسيطة لعرض منتجات متجرك عبر رابط واحد فقط، بدون تعقيد أو تكاليف عالية">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐺</text></svg>">
+    
+    <!-- تغيير Favicon إلى الصورة المطلوبة -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* جميع الأنماط السابقة تبقى كما هي */
         * {
             margin: 0;
             padding: 0;
@@ -42,7 +46,7 @@
             padding: 0 20px;
         }
         
-        /* Header */
+        /* Header - تم تحديث الستايل للشعار الجديد */
         header {
             background: white;
             box-shadow: var(--shadow);
@@ -69,14 +73,17 @@
         .logo-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 24px;
             transition: var(--transition);
+        }
+        
+        /* تحديث صورة الشعار */
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         
         .logo:hover .logo-icon {
@@ -371,6 +378,64 @@
             font-size: 1.1rem;
         }
         
+        /* قسم المعلومات الجديدة */
+        .info-sections {
+            padding: 60px 0;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            border-right: 5px solid var(--secondary);
+        }
+        
+        .info-card h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .info-card h3 i {
+            color: var(--accent);
+        }
+        
+        .info-content {
+            line-height: 1.8;
+        }
+        
+        .info-content ul {
+            list-style: none;
+            margin: 20px 0;
+            padding-right: 20px;
+        }
+        
+        .info-content li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-right: 4px solid var(--accent);
+        }
+        
+        .warning-box {
+            background: #fff5f5;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-right: 4px solid #fc8181;
+        }
+        
         /* CTA Section */
         .cta-section {
             padding: 100px 0;
@@ -417,7 +482,6 @@
         .footer-logo .logo-icon {
             width: 40px;
             height: 40px;
-            font-size: 20px;
         }
         
         .footer-links h4 {
@@ -500,6 +564,10 @@
             .cta-section h2 {
                 font-size: 2rem;
             }
+            
+            .info-card {
+                padding: 25px;
+            }
         }
         
         /* Animations */
@@ -537,10 +605,11 @@
     <header>
         <div class="container header-container">
             <a href="#" class="logo">
+                <!-- تم تغيير الشعار إلى الصورة المطلوبة -->
                 <div class="logo-icon">
-                    <i class="fas fa-paw"></i>
+                    <img src="logo_icon.png" alt="شعار تطبيق إدارة متجر">
                 </div>
-                <div class="logo-text">الديب</div>
+                <div class="logo-text">تطبيق إدارة متجر</div>
             </a>
             
             <button class="mobile-menu-btn" id="menuBtn">
@@ -551,6 +620,7 @@
                 <ul>
                     <li><a href="#features">المميزات</a></li>
                     <li><a href="#app">عن التطبيق</a></li>
+                    <li><a href="#info">معلومات هامة</a></li>
                     <li><a href="#pricing">السعر</a></li>
                     <li><a href="#cta">ابدأ الآن</a></li>
                 </ul>
@@ -670,6 +740,123 @@
         </div>
     </section>
 
+    <!-- قسم المعلومات الجديدة -->
+    <section class="info-sections" id="info">
+        <div class="container">
+            <h2 class="section-title animate">معلومات هامة</h2>
+            
+            <!-- معلومات المشروع -->
+            <div class="info-card animate">
+                <h3><i class="fas fa-info-circle"></i> معلومات عن التطبيق</h3>
+                <div class="info-content">
+                    <p><strong>تطبيق إدارة متجر</strong> هو تطبيق رقمي مخصص لأصحاب المتاجر الصغيرة والمتوسطة لإدارة منتجاتهم بسهولة ومن مكان واحد.</p>
+                    
+                    <div class="highlight-box">
+                        <p>يتيح التطبيق:</p>
+                        <ul>
+                            <li>إضافة وتعديل وحذف المنتجات</li>
+                            <li>تنظيم المنتجات ضمن فئات</li>
+                            <li>تحديد الأسعار والأحجام</li>
+                            <li>إنشاء عروض خاصة</li>
+                            <li>تفعيل أو إيقاف المنتجات</li>
+                            <li>إنشاء صفحة متجر إلكترونية لعرض المنتجات للعملاء</li>
+                        </ul>
+                    </div>
+                    
+                    <p><strong>ملاحظة هامة:</strong> التطبيق مخصص لأصحاب المتاجر فقط. العملاء النهائيون لا يقومون بأي عمليات دفع داخل النظام.</p>
+                    <p>يتم استخدام الخدمة من خلال تفعيل سنوي مدفوع، ويتم الوصول إليها بعد التسجيل في تطبيق الإدارة.</p>
+                </div>
+            </div>
+            
+            <!-- الأسعار -->
+            <div class="info-card animate delay-1">
+                <h3><i class="fas fa-tags"></i> الأسعار</h3>
+                <div class="info-content">
+                    <p>يتم استخدام تطبيق إدارة متجر من خلال تفعيل سنوي.</p>
+                    <ul>
+                        <li><strong>مدة التفعيل:</strong> سنة واحدة</li>
+                        <li><strong>التجديد:</strong> لا يوجد تجديد تلقائي</li>
+                        <li><strong>إعادة التفعيل:</strong> يجب إعادة التفعيل يدويًا بعد انتهاء المدة</li>
+                        <li><strong>الشفافية:</strong> يتم عرض السعر ومدة التفعيل بوضوح قبل الدفع</li>
+                    </ul>
+                    <p class="highlight-box"><i class="fas fa-check-circle" style="color: var(--success); margin-left: 10px;"></i> لا توجد أي رسوم خفية أو التزامات مستقبلية.</p>
+                </div>
+            </div>
+            
+            <!-- شروط الاستخدام -->
+            <div class="info-card animate delay-1">
+                <h3><i class="fas fa-file-contract"></i> شروط الاستخدام</h3>
+                <div class="info-content">
+                    <p>باستخدام تطبيق إدارة متجر، يوافق المستخدم على ما يلي:</p>
+                    <ul>
+                        <li>الخدمة رقمية ومخصصة لإدارة المنتجات والمتاجر</li>
+                        <li>يتم الدفع مقابل تفعيل سنوي غير متجدد تلقائيًا</li>
+                        <li>لا يتم تجديد التفعيل إلا بموافقة المستخدم</li>
+                        <li>لا توجد اشتراكات شهرية أو التزامات تلقائية</li>
+                        <li>المستخدم مسؤول عن المحتوى والبيانات التي يضيفها</li>
+                        <li>لا تشمل الخدمة بيع منتجات مادية أو خدمات شحن</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- سياسة الاسترداد -->
+            <div class="info-card animate delay-2">
+                <h3><i class="fas fa-undo-alt"></i> سياسة استرداد الأموال</h3>
+                <div class="info-content">
+                    <p>نظرًا لأن تطبيق إدارة متجر هو خدمة رقمية يتم تفعيلها مباشرة بعد الدفع، فإن سياسة الاسترداد كالتالي:</p>
+                    
+                    <div class="warning-box">
+                        <p><strong><i class="fas fa-exclamation-triangle" style="color: #fc8181; margin-left: 10px;"></i> مهم:</strong></p>
+                        <ul>
+                            <li>بعد إتمام الدفع وتفعيل الحساب، لا يتم تقديم استرداد للأموال</li>
+                            <li>لا يمكن استرداد المبلغ في حال عدم الاستخدام أو الاستخدام الجزئي</li>
+                        </ul>
+                    </div>
+                    
+                    <p>في حال حدوث خطأ تقني مثبت يمنع استخدام الخدمة كليًا، يمكن للمستخدم التواصل معنا خلال <strong>7 أيام</strong> من تاريخ الدفع.</p>
+                    <p>يتم فحص الطلب، وفي حال ثبوت المشكلة التقنية، قد يتم تقديم استرداد جزئي أو كامل حسب الحالة.</p>
+                    <p><strong>لا يتم تقديم أي استرداد بعد انتهاء مدة التفعيل السنوية.</strong></p>
+                </div>
+            </div>
+            
+            <!-- سياسة الخصوصية -->
+            <div class="info-card animate delay-2">
+                <h3><i class="fas fa-shield-alt"></i> سياسة الخصوصية</h3>
+                <div class="info-content">
+                    <p>نلتزم بحماية خصوصية المستخدمين وفق القوانين المعمول بها.</p>
+                    <ul>
+                        <li>يتم جمع البيانات فقط لتشغيل الخدمة</li>
+                        <li>لا يتم بيع أو مشاركة البيانات مع أطراف ثالثة</li>
+                        <li>تتم معالجة المدفوعات عبر مزود دفع خارجي (Stripe)</li>
+                        <li>لا يتم تخزين بيانات بطاقات الدفع داخل التطبيق</li>
+                        <li>يمكن للمستخدم طلب حذف بياناته عبر التواصل معنا</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- الاتصال والبيانات القانونية -->
+            <div class="info-card animate delay-3">
+                <h3><i class="fas fa-address-card"></i> بيانات الاتصال والقانونية</h3>
+                <div class="info-content">
+                    <h4 style="color: var(--primary); margin: 25px 0 15px;">الاتصال</h4>
+                    <ul>
+                        <li><strong>الهاتف:</strong> 017623456589</li>
+                        <li><strong>البريد الإلكتروني:</strong> nsem338@gmail.com</li>
+                    </ul>
+                    
+                    <h4 style="color: var(--primary); margin: 25px 0 15px;">البيانات القانونية (Impressum)</h4>
+                    <div class="highlight-box">
+                        <p><strong>المزود:</strong> Abdullelah Kadour</p>
+                        <p><strong>العنوان:</strong> Ladenbeker Furtweg 250, 21033 Hamburg, Deutschland</p>
+                        <p><strong>الهاتف:</strong> 017623456589</p>
+                        <p><strong>البريد الإلكتروني:</strong> nsem338@gmail.com</p>
+                        <p><strong>نوع الخدمة:</strong> برمجية رقمية (SaaS) - تفعيل سنوي بدون تجديد تلقائي</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing -->
     <section class="pricing" id="pricing">
         <div class="container">
@@ -728,10 +915,11 @@
             <div class="footer-content">
                 <div>
                     <div class="footer-logo">
+                        <!-- تم تغيير الشعار في الفوتر أيضًا -->
                         <div class="logo-icon">
-                            <i class="fas fa-paw"></i>
+                            <img src="logo_icon.png" alt="شعار تطبيق إدارة متجر" style="width: 40px; height: 40px;">
                         </div>
-                        <div style="font-size: 1.5rem; font-weight: 700;">الديب</div>
+                        <div style="font-size: 1.5rem; font-weight: 700;">تطبيق إدارة متجر</div>
                     </div>
                     <p>حلول رقمية بسيطة لأصحاب المتاجر والمشاريع الصغيرة.</p>
                 </div>
@@ -741,6 +929,7 @@
                     <ul>
                         <li><a href="#features">المميزات</a></li>
                         <li><a href="#app">عن التطبيق</a></li>
+                        <li><a href="#info">معلومات هامة</a></li>
                         <li><a href="#pricing">السعر</a></li>
                         <li><a href="#cta">ابدأ الآن</a></li>
                     </ul>
@@ -750,13 +939,14 @@
                     <h4>التواصل</h4>
                     <ul>
                         <li><a href="mailto:nsem338@gmail.com">nsem338@gmail.com</a></li>
+                        <li><a href="tel:017623456589">017623456589</a></li>
                         <li><a href="https://admin.aldeebtech.de/" target="_blank">تطبيق إدارة متجر</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>© 2024 الديب | <a href="https://admin.aldeebtech.de/" target="_blank" style="color: var(--accent); text-decoration: none;">admin.aldeebtech.de</a></p>
+                <p>© 2024 تطبيق إدارة متجر | <a href="https://admin.aldeebtech.de/" target="_blank" style="color: var(--accent); text-decoration: none;">admin.aldeebtech.de</a></p>
                 <p style="margin-top: 10px; font-size: 0.85rem;">
                     هذا الموقع يهدف إلى التعريف بالتطبيق فقط. الأسعار والعروض قابلة للتغيير.
                 </p>
