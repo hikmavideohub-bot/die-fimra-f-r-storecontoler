@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.aldeebtech.storecontroller",
+      "sha256_cert_fingerprints": [
+        "8C:A6:92:7E:34:6C:B7:08:EF:2F:92:BF:D3:67:9A:22:FF:9B:5B:4B:C5:09:2F:52:F6:C5:6B:06:6B:2C:54:C2"
+      ]
+    }
+  }
+]
