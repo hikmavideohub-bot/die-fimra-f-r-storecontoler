@@ -1,11 +1,14 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.aldeebtech.storecontroller",
       "sha256_cert_fingerprints": [
-        "85:D9:9E:11:5A:F8:79:B0:22:00:EA:25:71:46:E8:5A:06:A6:17:0C:3A:A2:11:FE:D8:F7:37:55:ED:99:01:9A"
+        "85:D9:9E:11:5A:F8:79:B0:22:00:EA:25:71:46:E8:5A:06:A6:17:0C:3A:A2:11:FE:D8:F7:37:55:ED:99:01:9A",
+        "D4:C9:2C:9B:F2:9D:45:6F:77:28:E5:E8:70:D1:38:3C:13:8C:10:FA:0E:2F:1F:B7:9F:C2:D0:DA:00:7D:26:63"
       ]
     }
   }
