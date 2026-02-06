@@ -1,124 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
-  <title>سياسة الخصوصية — Aldeeb</title>
-  <style>
-    :root{
-      --bg:#f6f8ff; --text:#0b1220; --muted:#5c6b86;
-      --border: rgba(11,18,32,.12); --shadow: 0 18px 50px rgba(15,23,42,.10);
-      --radius:16px; --accent:#0ea5e9;
-    }
-    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.85}
-    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-    .wrap{max-width:980px;margin:0 auto;padding:22px 16px}
-    .top{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:12px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:14px;border:1px solid var(--border);background:#fff;box-shadow:0 10px 20px rgba(15,23,42,.06);font-weight:900;color:rgba(11,18,32,.88)}
-    .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-    h1{margin:0 0 8px;font-size:28px}
-    h2{margin:18px 0 8px;font-size:18px}
-    p{margin:8px 0;color:rgba(11,18,32,.88);font-weight:650}
-    ul{margin:8px 0;padding:0 22px;color:rgba(11,18,32,.88);font-weight:650}
-    .muted{color:var(--muted);font-weight:800}
-    .note{border:1px solid rgba(34,197,94,.35);background:rgba(34,197,94,.08);border-radius:14px;padding:12px;font-weight:850;color:rgba(11,18,32,.86)}
-    footer{margin-top:14px;color:var(--muted);font-weight:850}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية - Aldeeb</title>
+    <link rel="icon" href="assets/favicon-32x32.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; background: #F9FAFB; color: #1F2937; line-height: 1.8; margin: 0; padding: 0; }
+        .container { max-width: 900px; margin: 50px auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h1 { color: #2563EB; border-bottom: 2px solid #F59E0B; padding-bottom: 15px; margin-bottom: 30px; }
+        h2 { font-size: 1.3rem; color: #1E40AF; margin-top: 30px; }
+        .info-box { background: #EFF6FF; padding: 15px; border-radius: 8px; border-right: 4px solid #2563EB; margin: 20px 0; }
+        a { color: #2563EB; text-decoration: none; font-weight: bold; }
+        .back-link { display: inline-block; margin-bottom: 20px; }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="top">
-      <a class="btn" href="index.html">← العودة للرئيسية</a>
-      <div style="display:flex; gap:10px; flex-wrap:wrap">
-        <a class="btn" href="https://admin.aldeebtech.de" target="_blank" rel="noopener">لوحة الإدارة</a>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.aldeebtech.storecontroller" target="_blank" rel="noopener">Google Play</a>
-        <a class="btn" href="agb.html">شروط الاستخدام</a>
-      </div>
+    <div class="container">
+        <a href="index.html" class="back-link">← العودة للرئيسية</a>
+        <h1>سياسة الخصوصية</h1>
+        
+        <div class="info-box">
+            <strong>المسؤول:</strong> Aldeeb Tech<br>
+            <strong>البريد الإلكتروني:</strong> <a href="mailto:aldeebtech.de@gmail.com">aldeebtech.de@gmail.com</a>
+        </div>
+
+        <h2>1. مقدمة</h2>
+        <p>نحن نأخذ خصوصيتك بجدية. توضح هذه الوثيقة كيفية تعاملنا مع البيانات عند استخدامك لتطبيق وموقع Aldeeb.</p>
+
+        <h2>2. البيانات التي نجمعها</h2>
+        <p>لتقديم الخدمة، نقوم بمعالجة البيانات التالية:</p>
+        <ul>
+            <li><strong>بيانات الحساب:</strong> البريد الإلكتروني وكلمة المرور (المشفرة) لتسجيل الدخول.</li>
+            <li><strong>بيانات المتجر:</strong> أسماء المنتجات، الصور، الأسعار، وأوصاف المنتجات التي تقوم بإدخالها بنفسك.</li>
+            <li><strong>الوسائط:</strong> عند رفع صور للمنتجات، نطلب إذن الوصول إلى المعرض (READ_MEDIA_IMAGES). يتم استخدام هذا الإذن حصراً لرفع الصور التي تختارها أنت.</li>
+        </ul>
+
+        <h2>3. خدمات الطرف الثالث</h2>
+        <p>نعتمد على مزودين موثوقين لضمان عمل الخدمة:</p>
+        <ul>
+            <li><strong>Google Firebase:</strong> لاستضافة قاعدة البيانات والمصادقة وتخزين الصور بشكل آمن.</li>
+            <li><strong>WhatsApp:</strong> نحن نقوم بتوليد رابط للمحادثة فقط. لا نطلع على محتوى الرسائل ولا نقوم بتخزينها، حيث تتم المحادثة بالكامل داخل تطبيق واتساب الخاضع لشركة Meta.</li>
+        </ul>
+
+        <h2>4. استخدام البيانات</h2>
+        <p>نستخدم بياناتك فقط لغرض تشغيل متجرك الرقمي وعرض منتجاتك للزبائن عبر الرابط الذي تشاركه. نحن <strong>لا نقوم ببيع</strong> بياناتك لأي جهة إعلانية.</p>
+
+        <h2>5. حقوقك</h2>
+        <p>يحق لك في أي وقت طلب الحصول على نسخة من بياناتك أو طلب حذف حسابك وبياناتك بالكامل عبر التواصل معنا على البريد الإلكتروني الموضح أعلاه.</p>
     </div>
-
-    <div class="card">
-      <h1>سياسة الخصوصية — Aldeeb</h1>
-      <p class="muted">آخر تحديث: 06 فبراير 2026</p>
-
-      <h2>1) من نحن (الجهة المسؤولة)</h2>
-      <p>
-        الجهة المسؤولة عن معالجة البيانات وفق اللائحة العامة لحماية البيانات (GDPR/DSGVO):
-        <br><strong>Aldeeb Tech</strong>
-        <br>البريد الإلكتروني: <a href="mailto:aldeebtech.de@gmail.com">aldeebtech.de@gmail.com</a>
-        <br><span class="muted">العنوان القانوني/Impressum: (ضع عنوانك القانوني هنا)</span>
-      </p>
-
-      <h2>2) نطاق هذه السياسة</h2>
-      <p>تشرح هذه السياسة كيفية جمع واستخدام وحماية البيانات عند زيارة الموقع أو استخدام الخدمة أو التواصل معنا.</p>
-
-      <h2>3) البيانات التي نعالجها</h2>
-      <ul>
-        <li><strong>عند زيارة الموقع:</strong> بيانات تقنية وسجلات خادم (مثل عنوان IP، نوع المتصفح، وقت الزيارة، الصفحات المطلوبة) لأغراض الأمان وتشخيص الأعطال.</li>
-        <li><strong>عند إنشاء حساب/استخدام Aldeeb:</strong> بيانات الحساب (مثل البريد الإلكتروني) + بيانات المتجر (منتجات، أسعار، صور، وصف، إعدادات) + بيانات الدعم.</li>
-        <li><strong>بيانات زبائن المتاجر:</strong> قد يتعامل التاجر مع بيانات الطلب (اسم/هاتف/عنوان/تفاصيل الطلب). التاجر مسؤول عن تحديد البيانات المطلوبة وإبلاغ زبائنه بسياسة خصوصية مناسبة لمتجره.</li>
-      </ul>
-
-      <h2>4) لماذا نعالج البيانات؟ (الأغراض)</h2>
-      <ul>
-        <li>تشغيل الخدمة وتمكين إدارة المتجر وعرضه للزبائن.</li>
-        <li>الأمان ومنع إساءة الاستخدام واكتشاف الأعطال.</li>
-        <li>التواصل والدعم الفني.</li>
-        <li>الالتزام بمتطلبات قانونية عند اللزوم (مثل الفوترة).</li>
-      </ul>
-
-      <h2>5) الأساس القانوني (GDPR)</h2>
-      <ul>
-        <li><strong>تنفيذ عقد/تقديم خدمة</strong> عند استخدام الخدمة.</li>
-        <li><strong>مصلحة مشروعة</strong> للأمان وتحسين الأداء ومنع الاحتيال.</li>
-        <li><strong>التزام قانوني</strong> عند الحاجة للاحتفاظ ببيانات وفق القانون.</li>
-      </ul>
-
-      <h2>6) خدمات الطرف الثالث (Firebase/Google)</h2>
-      <p>
-        قد نستخدم خدمات Google Firebase لتشغيل أجزاء من النظام (مثل الاستضافة/قاعدة البيانات/تخزين الصور/المصادقة/وظائف سحابية).
-        قد يؤدي ذلك إلى معالجة بيانات على خوادم Google داخل أو خارج الاتحاد الأوروبي بحسب إعدادات الخدمة واتفاقياتها.
-      </p>
-
-      <h2>7) واتساب (WhatsApp)</h2>
-      <p>
-        قد تتيح الخدمة إرسال الطلب على شكل رسالة جاهزة عبر واتساب. واتساب خدمة لطرف ثالث وتخضع لمعالجة البيانات لديه وفق شروطه وسياسة خصوصيته.
-        نحن لا نتحكم بما يفعله واتساب بالبيانات بعد الإرسال.
-      </p>
-
-      <h2>8) ملفات تعريف الارتباط (Cookies) والتحليلات</h2>
-      <p>
-        لا نستخدم ملفات تعريف ارتباط تسويقية أو أدوات تتبع إعلانية على هذا الموقع ما لم يتم توضيح ذلك صراحة.
-        قد تُستخدم ملفات تقنية ضرورية لتشغيل وظائف أساسية عند الحاجة.
-      </p>
-
-      <h2>9) مدة الاحتفاظ</h2>
-      <p>
-        نحتفظ بالبيانات فقط طالما كانت لازمة لتشغيل الخدمة أو للالتزامات القانونية.
-        عند إغلاق الحساب يمكن حذف البيانات أو جعلها مجهولة خلال مدة معقولة ما لم توجد أسباب قانونية للاحتفاظ.
-      </p>
-
-      <h2>10) حقوقك</h2>
-      <p>
-        لديك حقوق مثل الوصول لبياناتك، التصحيح، الحذف، تقييد المعالجة، نقل البيانات، الاعتراض، وسحب الموافقة إن وُجدت.
-        للتواصل: <a href="mailto:aldeebtech.de@gmail.com">aldeebtech.de@gmail.com</a>
-      </p>
-
-      <h2>11) تنبيه قانوني بخصوص نشاط المتاجر (ضرائب/Schwarzarbeit)</h2>
-      <div class="note">
-        Aldeeb منصة تقنية لتنظيم عرض المنتجات واستقبال الطلبات.
-        <strong>التاجر هو المسؤول الوحيد</strong> عن نشاطه التجاري، الالتزام بالضرائب والتسجيلات والفواتير وقوانين حماية المستهلك.
-        يُحظر استخدام الخدمة لتغطية نشاط غير قانوني أو غير مُسجّل أو للتهرب الضريبي/Schwarzarbeit.
-        نحتفظ بحق تعليق الحساب عند الاشتباه بسوء الاستخدام.
-      </div>
-
-      <h2>12) التعديلات على السياسة</h2>
-      <p>قد نحدّث هذه السياسة عند تغيير الخدمة أو المتطلبات القانونية، وسيتم نشر تاريخ التحديث أعلى الصفحة.</p>
-    </div>
-
-    <footer>
-      <div>للعودة: <a href="index.html">الصفحة الرئيسية</a> — للتواصل: <a href="mailto:aldeebtech.de@gmail.com">aldeebtech.de@gmail.com</a></div>
-    </footer>
-  </div>
 </body>
 </html>
