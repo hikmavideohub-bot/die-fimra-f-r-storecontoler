@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Aldeeb — كتالوج احترافي + صفحة طلب جاهزة. الطلبات توصلك على واتساب بشكل مرتب وواضح." />
+  <title>Aldeeb — خلّي طلباتك تصير نظام</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a31;
+      --muted:#9fb0d0;
+      --text:#eaf0ff;
+      --accent:#4fd1c5;
+      --accent2:#7aa7ff;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 70% -10%, rgba(122,167,255,.22), transparent 60%),
+                  radial-gradient(900px 600px at 0% 10%, rgba(79,209,197,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.7;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(11,18,32,.72);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px}
+    .logo{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 30px rgba(79,209,197,.18);
+    }
+    .navlinks{
+      display:flex; gap:18px; align-items:center;
+      color:rgba(234,240,255,.92);
+      font-weight:650;
+      font-size:14.5px;
+      flex-wrap:wrap;
+    }
+    .navlinks a{opacity:.88}
+    .navlinks a:hover{opacity:1}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:800;
+      cursor:pointer;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease;
+      gap:8px;
+      user-select:none;
+    }
+    .btn:hover{background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18)}
+    .btn:active{transform: translateY(1px)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(79,209,197,.98), rgba(122,167,255,.98));
+      border: none;
+      color:#06101f;
+      box-shadow: 0 18px 55px rgba(79,209,197,.18);
+    }
+    .btn.primary:hover{filter:saturate(1.05) brightness(1.03)}
+    .hamburger{
+      display:none;
+      width:42px; height:42px;
+      border-radius:14px;
+    }
+    .hero{
+      padding:42px 0 10px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      border-radius:999px;
+      color: rgba(234,240,255,.92);
+      font-weight:750;
+      width:fit-content;
+    }
+    h1{
+      margin:14px 0 8px;
+      font-size:44px;
+      line-height:1.18;
+      letter-spacing:-.5px;
+    }
+    .subline{
+      margin:0 0 14px;
+      font-size:18px;
+      color: rgba(234,240,255,.92);
+      font-weight:650;
+    }
+    .lead{
+      color: var(--muted);
+      font-size:16.5px;
+      margin:0 0 16px;
+    }
+    .bullets{
+      margin:16px 0 18px;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+      color: rgba(234,240,255,.92);
+      font-weight:650;
+    }
+    .bullets li{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+    }
+    .bullets .check{color: var(--accent); font-weight:900; margin-top:1px}
+    .ctarow{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:8px}
+    .ctanote{color: var(--muted); font-weight:650; font-size:13.5px}
+    .card{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .sideCardTitle{
+      font-weight:900; margin:0 0 10px; font-size:16px;
+    }
+    .sideList{margin:0; padding:0 18px; color: var(--muted)}
+    .sideList li{margin:8px 0}
+    section{padding:34px 0}
+    .sectionTitle{
+      display:flex; align-items:end; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    .sectionTitle h2{
+      margin:0;
+      font-size:26px;
+      letter-spacing:-.2px;
+    }
+    .sectionTitle p{margin:0; color: var(--muted); font-weight:650}
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .step{
+      padding:16px;
+      border-radius: 16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      min-height: 140px;
+    }
+    .stepNum{
+      width:38px; height:38px; border-radius:14px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900;
+      color:#06101f;
+      background: linear-gradient(135deg, rgba(79,209,197,.98), rgba(122,167,255,.98));
+      margin-bottom:10px;
+    }
+    .step h3{margin:0 0 6px; font-size:16.5px}
+    .step p{margin:0; color: var(--muted); font-weight:650}
+    .twoCols{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .mock{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      background: rgba(0,0,0,.18);
+      border:1px dashed rgba(255,255,255,.22);
+      border-radius: 16px;
+      padding:16px;
+      color: rgba(234,240,255,.92);
+      white-space:pre-wrap;
+      line-height:1.65;
+      font-size:13.5px;
+    }
+    .photoBox{
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      height: 100%;
+      min-height: 260px;
+      display:flex;
+      flex-direction:column;
+    }
+    .photoBox img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      flex:1;
+      min-height: 240px;
+      background: rgba(255,255,255,.03);
+    }
+    .photoCaption{
+      padding:10px 12px;
+      color: var(--muted);
+      font-weight:650;
+      font-size:13px;
+      border-top:1px solid var(--border);
+    }
+    .features{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .featureItem{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding:14px;
+    }
+    .featureItem h3{margin:0 0 6px; font-size:16px}
+    .featureItem p{margin:0; color: var(--muted); font-weight:650}
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .chip{
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color: rgba(234,240,255,.9);
+      font-weight:750;
+      font-size:13px;
+    }
+    .faq{
+      display:grid;
+      gap:12px;
+    }
+    details{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding:12px 14px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:850;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0; color: var(--muted); font-weight:650}
+    .ctaBand{
+      border:1px solid var(--border);
+      background: linear-gradient(135deg, rgba(79,209,197,.14), rgba(122,167,255,.14));
+      border-radius: 20px;
+      padding:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .ctaBand h3{margin:0; font-size:18px}
+    footer{
+      border-top:1px solid var(--border);
+      padding:18px 0 26px;
+      color: var(--muted);
+      font-weight:650;
+      font-size:13.5px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; align-items:center;
+    }
+    .foot a{opacity:.92}
+    .foot a:hover{opacity:1}
+    .muted{color: var(--muted)}
+
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns: 1fr}
+      h1{font-size:38px}
+      .twoCols{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr}
+    }
+    @media (max-width: 720px){
+      .navlinks{display:none}
+      .hamburger{display:inline-flex}
+      .grid3{grid-template-columns:1fr}
+      h1{font-size:34px}
+    }
+    .mobileMenu{
+      display:none;
+      border-top:1px solid var(--border);
+      padding:10px 0 14px;
+    }
+    .mobileMenu a{
+      display:block;
+      padding:12px 6px;
+      font-weight:850;
+      color: rgba(234,240,255,.92);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .mobileMenu a:last-child{border-bottom:none}
+    .mobileMenu.show{display:block}
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Aldeeb">
+          <span class="logo" aria-hidden="true"></span>
+          <span>Aldeeb</span>
+        </a>
+
+        <nav class="navlinks" aria-label="القائمة">
+          <a href="#features">المميزات</a>
+          <a href="#how">كيف يعمل</a>
+          <a href="#whatsapp">الطلبات على واتساب</a>
+          <a href="#langs">اللغات</a>
+          <a href="#faq">الأسئلة</a>
+          <a class="btn primary" href="#start">ابدأ الآن</a>
+        </nav>
+
+        <button class="btn hamburger" id="hamburger" aria-label="فتح القائمة" aria-expanded="false">
+          ☰
+        </button>
+      </div>
+
+      <div class="mobileMenu" id="mobileMenu" aria-label="قائمة الهاتف">
+        <a href="#features">المميزات</a>
+        <a href="#how">كيف يعمل</a>
+        <a href="#whatsapp">الطلبات على واتساب</a>
+        <a href="#langs">اللغات</a>
+        <a href="#faq">الأسئلة</a>
+        <a href="#start">ابدأ الآن</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+    <div class="container hero">
+      <div class="heroGrid">
+        <div>
+          <div class="pill">✨ مخصص للتجار وكافة المشاريع</div>
+
+          <h1>تعبت من “كم السعر؟” وطلبات تضيع في الواتساب؟</h1>
+          <p class="subline">خلّي الزبون يطلب بنفسه… وانت ركّز على البيع.</p>
+
+          <p class="lead">
+            Aldeeb يحوّل مشروعك إلى <strong>كتالوج احترافي</strong> + <strong>صفحة طلب جاهزة</strong>.
+            الزبون يتصفح، يختار الكمية والإضافات… وبالأخير توصلك الطلبية على واتساب
+            <strong>مرتّبة وواضحة</strong>: <strong>العنوان + تفاصيل الطلب + السعر النهائي</strong>.
+          </p>
+
+          <ul class="bullets">
+            <li><span class="check">✅</span><span>تنظيم الطلبات بدل فوضى الرسائل</span></li>
+            <li><span class="check">✅</span><span>رابط واحد لعرض منتجاتك للزبائن</span></li>
+            <li><span class="check">✅</span><span>متعدد اللغات: عربي / English / Deutsch / Türkçe</span></li>
+            <li><span class="check">✅</span><span>مناسب لمطاعم، عطور، زيوت، حلويات، خدمات… إلخ</span></li>
+          </ul>
+
+          <div class="ctarow">
+            <a class="btn primary" href="#start">جرّب مجانًا الآن</a>
+            <a class="btn" href="#how">شوف كيف يعمل</a>
+          </div>
+          <div class="ctanote">بدون تعقيد • إعداد خلال دقائق</div>
+        </div>
+
+        <aside class="card" aria-label="لماذا Aldeeb؟">
+          <p class="sideCardTitle">ليش الناس تحبه؟ (نتيجة واضحة)</p>
+          <ul class="sideList">
+            <li>الزبون يشوف كل شي بنفسه → أسئلة أقل → وقت أكثر للبيع.</li>
+            <li>الطلبات تيجي بصيغة مرتبة → أخطاء أقل → رضا أعلى.</li>
+            <li>صفحة خفيفة وسريعة → تعمل على كل الأجهزة.</li>
+          </ul>
+          <div class="chips" aria-label="نقاط ثقة">
+            <span class="chip">بدون تطبيق للزبون</span>
+            <span class="chip">رابط واحد</span>
+            <span class="chip">واتساب مرتب</span>
+            <span class="chip">إدارة سهلة</span>
+          </div>
+          <p class="muted" style="margin:12px 0 0">
+            ملاحظة مهمة: Aldeeb أداة لتنظيم الطلبات، وليست وسيط بيع. البيع يتم بين التاجر والزبون.
+          </p>
+        </aside>
+      </div>
+    </div>
+
+    <section id="how">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>كيف يعمل؟ (3 خطوات)</h2>
+          <p>سريع… وواضح… وفعّال.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="step">
+            <div class="stepNum">1</div>
+            <h3>أنشئ متجرك خلال دقائق</h3>
+            <p>اسم المتجر، معلومات بسيطة، وخلاص.</p>
+          </div>
+          <div class="step">
+            <div class="stepNum">2</div>
+            <h3>أضف منتجاتك</h3>
+            <p>صور، سعر، وصف، وإضافات/عروض حسب مشروعك.</p>
+          </div>
+          <div class="step">
+            <div class="stepNum">3</div>
+            <h3>شارك الرابط</h3>
+            <p>والطلبات توصلك منظّمة على واتساب بدل رسائل عشوائية.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="whatsapp">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>الطلبات على واتساب</h2>
+          <p>شكل الطلب يكون واضح… مو “فوضى”.</p>
+        </div>
+
+        <div class="twoCols">
+          <div class="card">
+            <h3 style="margin:0 0 10px">طلبات مرتّبة توصلك جاهزة</h3>
+            <div class="mock" aria-label="مثال رسالة طلب">
+📩 طلب جديد
+👤 الاسم: أحمد
+📍 العنوان: Hamburg — Eimsbüttel
+🧾 المنتجات:
+- زيت روزماري ×2
+- عطر (50ml) ×1
+💰 المجموع: 29.90€
+📞 رقم التواصل: +49 ...
+📝 ملاحظات: بدون سكر / توصيل مساءً
+            </div>
+            <p class="muted" style="margin:10px 0 0">
+              *هذا مثال توضيحي لشكل الرسالة. إرسال الطلب يتم عبر واتساب كخدمة طرف ثالث.*
+            </p>
+          </div>
+
+          <div class="photoBox" aria-label="صورة طلب حقيقية">
+            <!-- ضع صورتك هنا داخل مجلد assets باسم: order-example.jpg -->
+            <img src="assets/order-example.jpg" alt="مثال صورة طلب حقيقية" loading="lazy" />
+            <div class="photoCaption">
+              هنا تضع “صورة طلب حقيقية” (Screenshot) لزيادة الثقة. الاسم المقترح للصورة: <strong>order-example.jpg</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>المميزات (تركّز على النتيجة)</h2>
+          <p>كل شيء مصمم لتسهيل الطلب… وزيادة البيع.</p>
+        </div>
+
+        <div class="features">
+          <div class="featureItem">
+            <h3>كتالوج مرتب بدل صور متفرقة</h3>
+            <p>الزبون يتصفح المنتجات بسهولة ويشوف التفاصيل بدون ما يسأل كل مرة.</p>
+          </div>
+          <div class="featureItem">
+            <h3>كميات + إضافات + عروض</h3>
+            <p>خلي الطلب واضح: الكمية، الإضافات، العروض… بدون لخبطة.</p>
+          </div>
+          <div class="featureItem">
+            <h3>صفحة سريعة على كل الأجهزة</h3>
+            <p>موبايل/كمبيوتر… تجربة مرتبة وسريعة.</p>
+          </div>
+          <div class="featureItem">
+            <h3>إدارة سهلة</h3>
+            <p>تقدر تدير متجرك من التطبيق، ومن المتصفح كمان (مناسب للآيفون).</p>
+          </div>
+          <div class="featureItem">
+            <h3>ثقة ووضوح</h3>
+            <p>سياسة خصوصية وشروط استخدام واضحة، وأنت تتحكم بمحتوى متجرك.</p>
+          </div>
+          <div class="featureItem">
+            <h3>مناسب لأي مشروع</h3>
+            <p>من مطاعم وعطور وزيوت وحلويات… إلى خدمات ومحلات.</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <strong>معلومة مهمة (Business):</strong>
+          <span class="muted">
+            Aldeeb أداة تقنية لتنظيم عرض المنتجات واستقبال الطلبات. لا نتدخل في عمليات البيع أو الدفع أو الشحن بين التاجر والزبون.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section id="langs">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>اللغات</h2>
+          <p>متعدد اللغات ومناسب للزبائن المختلفين.</p>
+        </div>
+
+        <div class="card">
+          <p style="margin:0">
+            🌍 واجهة المتجر يمكن أن تظهر بلغة الزبون (حسب إعدادات المتجر ولغة الجهاز):<br/>
+            <strong>عربي</strong> / <strong>English</strong> / <strong>Deutsch</strong> / <strong>Türkçe</strong>
+          </p>
+          <div class="chips" style="margin-top:12px">
+            <span class="chip">مناسب للآيفون</span>
+            <span class="chip">مناسب للمشاريع الصغيرة والكبيرة</span>
+            <span class="chip">رابط واحد للمشاركة</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>الأسئلة الشائعة</h2>
+          <p>إجابات سريعة قبل ما تبدأ.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>هل يحتاج الزبون تطبيق؟</summary>
+            <p>لا. الزبون يفتح رابط المتجر مباشرة من المتصفح.</p>
+          </details>
+          <details>
+            <summary>كيف توصل الطلبات؟</summary>
+            <p>تصل بصيغة مرتبة عبر واتساب (خدمة طرف ثالث) حسب إعدادات المتجر.</p>
+          </details>
+          <details>
+            <summary>هل لازم خبرة تقنية؟</summary>
+            <p>أبدًا. الفكرة: كل شيء بسيط وسريع.</p>
+          </details>
+          <details>
+            <summary>هل أقدر أوقف/أخفي منتج أو أغيّر الأسعار؟</summary>
+            <p>نعم، من لوحة الإدارة في أي وقت.</p>
+          </details>
+          <details>
+            <summary>هل يدعم مطاعم وخدمات؟</summary>
+            <p>نعم. Aldeeb مناسب لمعظم أنواع المشاريع.</p>
+          </details>
+          <details>
+            <summary>هل بياناتي آمنة؟</summary>
+            <p>نطبق إجراءات حماية، ونستخدم اتصالًا مشفرًا (HTTPS). اقرأ سياسة الخصوصية لمزيد من التفاصيل.</p>
+          </details>
+          <details>
+            <summary>هل Aldeeb وسيط بيع أو مسؤول عن الضرائب؟</summary>
+            <p>لا. Aldeeb أداة تقنية فقط. مسؤولية النشاط التجاري (التسجيل/الضرائب/الفواتير) تقع على التاجر.</p>
+          </details>
+          <details>
+            <summary>كيف أتواصل مع الدعم؟</summary>
+            <p>راسلنا على: <a href="mailto:aldeebtech.de@gmail.com">aldeebtech.de@gmail.com</a></p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="start">
+      <div class="container">
+        <div class="ctaBand">
+          <div>
+            <h3>خلّي طلباتك تصير “نظام”… مو فوضى.</h3>
+            <div class="muted">ابدأ مجانًا — إعداد خلال دقائق</div>
+          </div>
+          <div class="ctarow" style="margin:0">
+            <!-- غيّر الرابط حسب مكان بدء التسجيل/التطبيق -->
+            <a class="btn primary" href="#" onclick="alert('ضع هنا رابط البدء/التسجيل داخل تطبيقك أو صفحة التسجيل.'); return false;">جرّب مجانًا الآن</a>
+            <a class="btn" href="mailto:aldeebtech.de@gmail.com">تواصل معنا</a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <strong>مهم للتجار:</strong>
+          <span class="muted">
+            التاجر مسؤول عن الالتزام بالقوانين (التسجيل التجاري/الضرائب/الفواتير/حماية المستهلك). Aldeeb لا يشارك في البيع ولا يضمن التزام أي متجر بهذه الالتزامات.
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>© <span id="year"></span> Aldeeb — جميع الحقوق محفوظة</div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap">
+          <a href="datenschutz.html">سياسة الخصوصية</a>
+          <a href="agb.html">شروط الاستخدام</a>
+          <a href="mailto:aldeebtech.de@gmail.com">aldeebtech.de@gmail.com</a>
+        </div>
+      </div>
+      <div class="muted" style="margin-top:10px">
+        هذا الموقع للتعريف بالخدمة. واتساب علامة تجارية لطرف ثالث، واستخدامه يخضع لشروط وسياسة خصوصيته.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const year = document.getElementById('year');
+    year.textContent = new Date().getFullYear();
+
+    function closeMenu(){
+      mobileMenu.classList.remove('show');
+      hamburger.setAttribute('aria-expanded','false');
+    }
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('show');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // اغلاق القائمة بعد الضغط على رابط
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+  </script>
+</body>
+</html>
