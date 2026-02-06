@@ -3,26 +3,38 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>شروط الاستخدام — Aldeeb (AGB)</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+  <title>شروط الاستخدام (AGB) — Aldeeb</title>
   <style>
-    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:#0b1220;color:#eaf0ff;line-height:1.8}
-    a{color:#7aa7ff;text-decoration:none} a:hover{text-decoration:underline}
-    .wrap{max-width:900px;margin:0 auto;padding:22px 16px}
-    .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:16px}
-    h1{margin:0 0 10px;font-size:28px}
-    h2{margin:18px 0 10px;font-size:18px}
-    p{margin:8px 0;color:rgba(234,240,255,.92)}
-    ul{margin:8px 0;padding:0 20px;color:rgba(234,240,255,.92)}
-    .muted{color:rgba(159,176,208,.95)}
-    .top{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:12px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#eaf0ff;font-weight:800}
+    :root{
+      --bg:#f6f8ff; --text:#0b1220; --muted:#5c6b86;
+      --border: rgba(11,18,32,.12); --shadow: 0 18px 50px rgba(15,23,42,.10);
+      --radius:16px; --accent:#0ea5e9;
+    }
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.85}
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+    .wrap{max-width:980px;margin:0 auto;padding:22px 16px}
+    .top{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:14px;border:1px solid var(--border);background:#fff;box-shadow:0 10px 20px rgba(15,23,42,.06);font-weight:900;color:rgba(11,18,32,.88)}
+    .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    h1{margin:0 0 8px;font-size:28px}
+    h2{margin:18px 0 8px;font-size:18px}
+    p{margin:8px 0;color:rgba(11,18,32,.88);font-weight:650}
+    ul{margin:8px 0;padding:0 22px;color:rgba(11,18,32,.88);font-weight:650}
+    .muted{color:var(--muted);font-weight:800}
+    .note{border:1px solid rgba(14,165,233,.30);background:rgba(14,165,233,.08);border-radius:14px;padding:12px;font-weight:900;color:rgba(11,18,32,.86)}
+    footer{margin-top:14px;color:var(--muted);font-weight:850}
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="top">
       <a class="btn" href="index.html">← العودة للرئيسية</a>
-      <a class="btn" href="datenschutz.html">سياسة الخصوصية</a>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a class="btn" href="https://admin.aldeebtech.de" target="_blank" rel="noopener">لوحة الإدارة</a>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.aldeebtech.storecontroller" target="_blank" rel="noopener">Google Play</a>
+        <a class="btn" href="datenschutz.html">سياسة الخصوصية</a>
+      </div>
     </div>
 
     <div class="card">
@@ -44,42 +56,38 @@
         <span class="muted">العنوان القانوني/Impressum: (ضع عنوانك القانوني هنا)</span>
       </p>
 
-      <h2>3) وصف الخدمة</h2>
+      <h2>3) ماذا يقدم Aldeeb؟</h2>
       <p>
         Aldeeb أداة تساعد التجار على إنشاء صفحة متجر لعرض المنتجات وإدارة المحتوى وتسهيل استقبال الطلبات بشكل مرتب (مثلًا عبر واتساب حسب إعدادات المتجر).
-        <strong>Aldeeb ليس وسيط بيع ولا يبيع المنتجات نيابةً عن التاجر.</strong> أي عقد بيع/خدمة يتم بين التاجر وزبونه فقط.
+        <strong>Aldeeb ليس وسيط بيع</strong> ولا يبيع المنتجات نيابةً عن التاجر، ولا يتدخل في اتفاق البيع/الدفع/الشحن بين التاجر والزبون.
       </p>
 
       <h2>4) إنشاء الحساب والاستخدام</h2>
       <ul>
         <li>يجب تقديم معلومات صحيحة عند التسجيل.</li>
         <li>المستخدم مسؤول عن حماية بيانات الدخول وعدم مشاركتها بطريقة غير آمنة.</li>
-        <li>يُمنع استخدام الخدمة للإضرار بالنظام أو إساءة الاستخدام أو التحايل على الحماية.</li>
+        <li>يُمنع إساءة استخدام الخدمة أو محاولة اختراقها أو تعطيلها.</li>
       </ul>
 
-      <h2>5) التزامات التاجر (ضرائب/قانون/Schwarzarbeit)</h2>
-      <p>
-        المستخدم/التاجر مسؤول وحده عن نشاطه التجاري والالتزام بالقوانين المحلية/الألمانية/الأوروبية عند الاقتضاء، بما في ذلك:
-        التسجيل التجاري، الضرائب، الفواتير، عرض الأسعار، سياسات الإرجاع، وقوانين حماية المستهلك.
-      </p>
-      <p>
-        يُحظر استخدام الخدمة لتغطية نشاط غير قانوني أو غير مُسجّل أو للتهرب الضريبي أو ما يُعرف بالعمل غير المصرّح (Schwarzarbeit).
-        Aldeeb لا يقدم استشارات ضريبية، ونوصي بالتواصل مع محاسب/جهة مختصة لضمان الامتثال.
-      </p>
+      <h2>5) التزامات التاجر (الضرائب/التسجيل/Schwarzarbeit)</h2>
+      <div class="note">
+        التاجر مسؤول وحده عن نشاطه التجاري والالتزام بالقوانين، بما في ذلك التسجيل التجاري، الضرائب، الفواتير، عرض الأسعار، وسياسات الإرجاع وقوانين حماية المستهلك.
+        يُحظر استخدام الخدمة لتغطية نشاط غير قانوني أو غير مُسجّل أو للتهرب الضريبي/Schwarzarbeit.
+      </div>
 
       <h2>6) المحتوى وحقوق الملكية</h2>
       <ul>
         <li>التاجر يحتفظ بملكية المحتوى الذي يرفعه.</li>
-        <li>بمنحك المحتوى داخل Aldeeb، تمنحنا ترخيصًا محدودًا وغير حصري لاستخدامه فقط لتشغيل الخدمة وعرض صفحة متجرك.</li>
-        <li>التاجر يضمن امتلاكه للحقوق اللازمة للصور/النصوص، وعدم انتهاك حقوق الغير.</li>
+        <li>يمنح التاجر Aldeeb ترخيصًا محدودًا وغير حصري لاستخدام المحتوى فقط لتشغيل الخدمة وعرض صفحة المتجر.</li>
+        <li>التاجر يضمن امتلاكه للحقوق اللازمة للصور/النصوص وعدم انتهاك حقوق الغير.</li>
       </ul>
 
       <h2>7) الاستخدامات المحظورة</h2>
       <ul>
-        <li>بيع أو ترويج سلع/خدمات غير قانونية.</li>
-        <li>محتوى احتيالي أو مضلل أو ينتهك حقوق الملكية.</li>
-        <li>محتوى كراهية/عنف/تحريض أو انتهاك الخصوصية.</li>
-        <li>محاولات اختراق أو تعطيل الخدمة أو استخراج بيانات بغير حق.</li>
+        <li>بيع/ترويج سلع أو خدمات غير قانونية.</li>
+        <li>محتوى احتيالي/مضلل أو ينتهك حقوق الملكية أو الخصوصية.</li>
+        <li>محتوى كراهية/عنف/تحريض.</li>
+        <li>محاولات اختراق أو جمع بيانات بغير حق.</li>
       </ul>
 
       <h2>8) واتساب كقناة تواصل</h2>
@@ -88,10 +96,10 @@
         نحن لا نضمن توفر واتساب أو أي طرف ثالث ولا نتحمل مسؤولية أعطالهم.
       </p>
 
-      <h2>9) الخدمة المجانية والميزات المدفوعة (إن وُجدت)</h2>
+      <h2>9) الاستخدام المجاني والميزات المدفوعة (إن وُجدت)</h2>
       <p>
-        قد نوفر استخدامًا مجانيًا أو فترة تجريبية مجانية لبعض الميزات. وقد تتوفر ميزات مدفوعة اختيارية.
-        لا يتم تحصيل أي مبلغ إلا بعد إظهار تفاصيل الدفع بوضوح وإتمام العملية بموافقة المستخدم.
+        قد نوفر استخدامًا مجانيًا أو فترة تجريبية مجانية لبعض الميزات، وقد تتوفر ميزات مدفوعة اختيارية.
+        لا يتم تحصيل أي مبلغ إلا بعد إظهار التفاصيل بوضوح وموافقة المستخدم.
       </p>
 
       <h2>10) الإيقاف/الإنهاء</h2>
@@ -102,8 +110,7 @@
 
       <h2>11) حدود المسؤولية</h2>
       <p>
-        Aldeeb يقدم أداة تقنية فقط. لا نتحمل مسؤولية:
-        جودة المنتجات، الأسعار، الشحن، الدفع، الضمانات، أو أي نزاع بين التاجر والزبون.
+        Aldeeb يقدم أداة تقنية فقط. لا نتحمل مسؤولية جودة المنتجات أو النزاعات بين التاجر والزبون أو الدفع أو الشحن أو الضرائب.
         تبقى المسؤولية غير محدودة في حالات العمد أو الإهمال الجسيم أو الأضرار على الحياة/الجسد/الصحة وفق القانون.
       </p>
 
@@ -114,18 +121,18 @@
       </p>
 
       <h2>13) التعديلات على الشروط</h2>
-      <p>قد نقوم بتحديث هذه الشروط عند تغيير الخدمة أو المتطلبات القانونية، وسيتم نشر تاريخ التحديث أعلى الصفحة.</p>
+      <p>قد نقوم بتحديث الشروط عند تغيير الخدمة أو المتطلبات القانونية، وسيتم نشر تاريخ التحديث أعلى الصفحة.</p>
 
       <h2>14) القانون والاختصاص</h2>
       <p>
         تخضع هذه الشروط لقوانين ألمانيا إلى الحد الذي يسمح به القانون.
-        مكان الاختصاص القضائي يعتمد على وضع المزود ونوع المستخدم (تاجر/مستهلك) وفق القواعد القانونية المعمول بها.
+        مكان الاختصاص القضائي يعتمد على وضع المزود ونوع المستخدم وفق القواعد القانونية المعمول بها.
       </p>
     </div>
 
-    <p class="muted" style="margin-top:12px">
-      للعودة: <a href="index.html">الصفحة الرئيسية</a>
-    </p>
+    <footer>
+      <div>للعودة: <a href="index.html">الصفحة الرئيسية</a> — للتواصل: <a href="mailto:aldeebtech.de@gmail.com">aldeebtech.de@gmail.com</a></div>
+    </footer>
   </div>
 </body>
 </html>
