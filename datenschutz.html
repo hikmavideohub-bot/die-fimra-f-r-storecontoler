@@ -3,184 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سياسة الخصوصية - Aldeeb</title>
+    <title>Privacy Policy / سياسة الخصوصية - Aldeeb</title>
     <link rel="icon" href="assets/favicon-32x32.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; background: #F9FAFB; color: #1F2937; line-height: 1.8; margin: 0; padding: 0; }
-        .container { max-width: 900px; margin: 50px auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .container { max-width: 900px; margin: 50px auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative; }
         h1 { color: #2563EB; border-bottom: 2px solid #F59E0B; padding-bottom: 15px; margin-bottom: 30px; }
         h2 { font-size: 1.3rem; color: #1E40AF; margin-top: 30px; }
         .info-box { background: #EFF6FF; padding: 15px; border-radius: 8px; border-right: 4px solid #2563EB; margin: 20px 0; }
-        a { color: #2563EB; text-decoration: none; font-weight: bold; }
-        .back-link { display: inline-block; margin-bottom: 20px; }
-    </style>
-
-<style>
-  .lang { display:none; }
-  .lang.active { display:block; }
-  .lang-switch {
-    position: fixed;
-    top: 14px;
-    left: 14px;
-    z-index: 9999;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  }
-  .lang-switch button{
-    border: 1px solid rgba(0,0,0,0.15);
-    background: white;
-    padding: 8px 10px;
-    border-radius: 999px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 13px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  }
-  .lang-switch button.active{
-    border-color: #2563EB;
-    color: #2563EB;
-  }
-</style>
-
-</head>
-
-<body>
-  <div class="lang lang-ar" lang="ar" dir="rtl">
-
-    <div class="container">
-        <a href="index.html" class="back-link">← العودة للرئيسية</a>
-        <h1>سياسة الخصوصية</h1>
         
-        <div class="info-box">
-            <strong>المسؤول:</strong> Aldeeb Tech<br>
-            <strong>البريد الإلكتروني:</strong> <a href="mailto:aldeebtech.de@gmail.com">aldeebtech.de@gmail.com</a>
-        </div>
+        /* LTR adjustments */
+        html[dir="ltr"] .info-box { border-right: none; border-left: 4px solid #2563EB; }
+        html[dir="ltr"] ul { padding-right: 0; padding-left: 20px; }
 
-        <h2>1. مقدمة</h2>
-        <p>نحن نأخذ خصوصيتك بجدية. توضح هذه الوثيقة كيفية تعاملنا مع البيانات عند استخدامك لتطبيق وموقع Aldeeb.</p>
+        a { color: #2563EB; text-decoration: none; font-weight: bold; cursor: pointer; }
+        .back-link { display: inline-block; margin-bottom: 20px; }
+        .lang-switch { position: absolute; top: 40px; left: 40px; background: #eee; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+        html[dir="ltr"] .lang-switch { right: 40px; left: auto; }
 
-        <h2>2. البيانات التي نجمعها</h2>
-        <p>لتقديم الخدمة، نقوم بمعالجة البيانات التالية:</p>
-        <ul>
-            <li><strong>بيانات الحساب:</strong> البريد الإلكتروني وكلمة المرور (المشفرة) لتسجيل الدخول.</li>
-            <li><strong>بيانات المتجر:</strong> أسماء المنتجات، الصور، الأسعار، وأوصاف المنتجات التي تقوم بإدخالها بنفسك.</li>
-            <li><strong>الوسائط:</strong> عند رفع صور للمنتجات، نطلب إذن الوصول إلى المعرض (READ_MEDIA_IMAGES). يتم استخدام هذا الإذن حصراً لرفع الصور التي تختارها أنت.</li>
-        </ul>
-
-        <h2>3. خدمات الطرف الثالث</h2>
-        <p>نعتمد على مزودين موثوقين لضمان عمل الخدمة:</p>
-        <ul>
-            <li><strong>Google Firebase:</strong> لاستضافة قاعدة البيانات والمصادقة وتخزين الصور بشكل آمن.</li>
-            <li><strong>WhatsApp:</strong> نحن نقوم بتوليد رابط للمحادثة فقط. لا نطلع على محتوى الرسائل ولا نقوم بتخزينها، حيث تتم المحادثة بالكامل داخل تطبيق واتساب الخاضع لشركة Meta.</li>
-        </ul>
-
-        <h2>4. استخدام البيانات</h2>
-        <p>نستخدم بياناتك فقط لغرض تشغيل متجرك الرقمي وعرض منتجاتك للزبائن عبر الرابط الذي تشاركه. نحن <strong>لا نقوم ببيع</strong> بياناتك لأي جهة إعلانية.</p>
-
-        <h2>5. حقوقك</h2>
-        <p>يحق لك في أي وقت طلب الحصول على نسخة من بياناتك أو طلب حذف حسابك وبياناتك بالكامل عبر التواصل معنا على البريد الإلكتروني الموضح أعلاه.</p>
-    </div>
-
-  </div>
-  <div class="lang lang-en" lang="en" dir="ltr">
-
+        .content-en { display: none; }
+    </style>
+</head>
+<body>
     <div class="container">
-        <a href="index.html" class="back-link">← Back to home</a>
-        <h1>Privacy Policy</h1>
+        <div class="lang-switch" id="langToggle">Switch to English</div>
+        <a href="index.html" class="back-link">← <span id="backText">العودة للرئيسية</span></a>
+        
+        <div id="content-ar">
+            <h1>سياسة الخصوصية</h1>
+            
+            <div class="info-box">
+                <strong>المسؤول:</strong> Aldeeb Tech<br>
+                <strong>البريد الإلكتروني:</strong> <a href="mailto:aldeebtech.de@gmail.com">aldeebtech.de@gmail.com</a>
+            </div>
 
-        <div class="info-box">
-            <strong>Controller:</strong> Aldeeb Tech<br>
-            <strong>Email:</strong> <a href="mailto:aldeebtech.de@gmail.com">aldeebtech.de@gmail.com</a>
+            <h2>1. مقدمة</h2>
+            <p>نحن نأخذ خصوصيتك بجدية. توضح هذه الوثيقة كيفية تعاملنا مع البيانات عند استخدامك لتطبيق وموقع Aldeeb.</p>
+
+            <h2>2. البيانات التي نجمعها</h2>
+            <p>لتقديم الخدمة، نقوم بمعالجة البيانات التالية:</p>
+            <ul>
+                <li><strong>بيانات الحساب:</strong> البريد الإلكتروني وكلمة المرور (المشفرة) لتسجيل الدخول.</li>
+                <li><strong>بيانات المتجر:</strong> أسماء المنتجات، الصور، الأسعار، وأوصاف المنتجات التي تقوم بإدخالها بنفسك.</li>
+                <li><strong>الوسائط:</strong> عند رفع صور للمنتجات، نطلب إذن الوصول إلى المعرض (READ_MEDIA_IMAGES). يتم استخدام هذا الإذن حصراً لرفع الصور التي تختارها أنت.</li>
+            </ul>
+
+            <h2>3. خدمات الطرف الثالث</h2>
+            <p>نعتمد على مزودين موثوقين لضمان عمل الخدمة:</p>
+            <ul>
+                <li><strong>Google Firebase:</strong> لاستضافة قاعدة البيانات والمصادقة وتخزين الصور بشكل آمن.</li>
+                <li><strong>WhatsApp:</strong> نحن نقوم بتوليد رابط للمحادثة فقط. لا نطلع على محتوى الرسائل ولا نقوم بتخزينها، حيث تتم المحادثة بالكامل داخل تطبيق واتساب الخاضع لشركة Meta.</li>
+            </ul>
+
+            <h2>4. استخدام البيانات</h2>
+            <p>نستخدم بياناتك فقط لغرض تشغيل متجرك الرقمي وعرض منتجاتك للزبائن عبر الرابط الذي تشاركه. نحن <strong>لا نقوم ببيع</strong> بياناتك لأي جهة إعلانية.</p>
+
+            <h2>5. حقوقك</h2>
+            <p>يحق لك في أي وقت طلب الحصول على نسخة من بياناتك أو طلب حذف حسابك وبياناتك بالكامل عبر التواصل معنا على البريد الإلكتروني الموضح أعلاه.</p>
         </div>
 
-        <h2>1. Introduction</h2>
-        <p>We take your privacy seriously. This document explains how we handle data when you use the Aldeeb app and website.</p>
+        <div id="content-en" class="content-en">
+            <h1>Privacy Policy</h1>
+            
+            <div class="info-box">
+                <strong>Controller:</strong> Aldeeb Tech<br>
+                <strong>Email:</strong> <a href="mailto:aldeebtech.de@gmail.com">aldeebtech.de@gmail.com</a>
+            </div>
 
-        <h2>2. Data we process</h2>
-        <p>To provide the service, we process the following data:</p>
-        <ul>
-            <li><strong>Account data:</strong> email address and password (stored in encrypted/hashed form) for login.</li>
-            <li><strong>Store data:</strong> product names, images, prices, and product descriptions that you enter yourself.</li>
-            <li><strong>Media:</strong> when you upload product images, we request access permission to your gallery (READ_MEDIA_IMAGES). This permission is used solely to upload images you choose.</li>
-        </ul>
+            <h2>1. Introduction</h2>
+            <p>We take your privacy seriously. This document explains how we handle data when you use the Aldeeb app and website.</p>
 
-        <h2>3. Third-party services</h2>
-        <p>We rely on trusted providers to operate the service:</p>
-        <ul>
-            <li><strong>Google Firebase:</strong> for database hosting, authentication, and secure image storage.</li>
-            <li><strong>WhatsApp:</strong> we only generate a chat link. We do not view or store message contents; the conversation happens entirely inside WhatsApp (Meta).</li>
-        </ul>
+            <h2>2. Data We Collect</h2>
+            <p>To provide the service, we process the following data:</p>
+            <ul>
+                <li><strong>Account Data:</strong> Email and password (encrypted) for login.</li>
+                <li><strong>Store Data:</strong> Product names, images, prices, and product descriptions that you enter yourself.</li>
+                <li><strong>Media:</strong> When uploading product images, we request access to the gallery (READ_MEDIA_IMAGES). This permission is used exclusively to upload the images you choose.</li>
+            </ul>
 
-        <h2>4. Use of data</h2>
-        <p>We use your data only to run your digital store and display your products to customers via the link you share. We <strong>do not sell</strong> your data to any advertising parties.</p>
+            <h2>3. Third-Party Services</h2>
+            <p>We rely on trusted providers to ensure the service works:</p>
+            <ul>
+                <li><strong>Google Firebase:</strong> To host the database, authentication, and securely store images.</li>
+                <li><strong>WhatsApp:</strong> We only generate a chat link. We do not view message content nor store it, as the conversation takes place entirely within the WhatsApp app owned by Meta.</li>
+            </ul>
 
-        <h2>5. Your rights</h2>
-        <p>You can request a copy of your data or ask us to delete your account and data at any time by contacting us at the email above.</p>
+            <h2>4. Data Usage</h2>
+            <p>We use your data solely for the purpose of operating your digital store and displaying your products to customers via the link you share. We <strong>do not sell</strong> your data to any advertising entities.</p>
+
+            <h2>5. Your Rights</h2>
+            <p>You have the right at any time to request a copy of your data or request the complete deletion of your account and data by contacting us at the email address above.</p>
+        </div>
     </div>
 
-  </div>
+    <script>
+        const langToggle = document.getElementById('langToggle');
+        const contentAr = document.getElementById('content-ar');
+        const contentEn = document.getElementById('content-en');
+        const backText = document.getElementById('backText');
 
-<script>
-(function(){
-  function getLang(){
-    const url = new URL(window.location.href);
-    const q = url.searchParams.get('lang');
-    if(q === 'en' || q === 'ar') return q;
-    const ls = localStorage.getItem('lang');
-    if(ls === 'en' || ls === 'ar') return ls;
-    return 'ar';
-  }
-  function setLang(lang){
-    localStorage.setItem('lang', lang);
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', lang);
-    window.location.replace(url.toString());
-  }
-  const lang = getLang();
-  document.documentElement.lang = lang;
-  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+        function updateView(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            if (lang === 'en') {
+                contentAr.style.display = 'none';
+                contentEn.style.display = 'block';
+                langToggle.innerText = 'تبديل للعربية';
+                backText.innerText = 'Back to Home';
+            } else {
+                contentAr.style.display = 'block';
+                contentEn.style.display = 'none';
+                langToggle.innerText = 'Switch to English';
+                backText.innerText = 'العودة للرئيسية';
+            }
+        }
 
-  // Show correct block
-  const ar = document.querySelector('.lang-ar');
-  const en = document.querySelector('.lang-en');
-  if(ar && en){
-    (lang === 'ar' ? ar : en).classList.add('active');
-  }
+        // Load saved language
+        let currentLang = localStorage.getItem('aldeeb_lang') || 'ar';
+        updateView(currentLang);
 
-  // Update links to keep lang param
-  document.querySelectorAll('a[href]').forEach(a=>{
-    const href = a.getAttribute('href');
-    if(!href) return;
-    if(href.startsWith('mailto:') || href.startsWith('http') || href.startsWith('#') || href.startsWith('javascript:')) return;
-    if(href.includes('?lang=')) return;
-    if(href.endsWith('.html') || href.includes('.html#') || href.includes('.html?') || href.startsWith('./') || href.indexOf('/')===-1){
-      try{
-        const u = new URL(href, window.location.href);
-        u.searchParams.set('lang', lang);
-        a.setAttribute('href', u.pathname.split('/').pop() + '?' + u.searchParams.toString() + (u.hash||''));
-      }catch(e){}
-    }
-  });
-
-  // Render switch UI
-  const wrap = document.createElement('div');
-  wrap.className = 'lang-switch';
-  wrap.innerHTML = `
-    <button id="btnAr" type="button">عربي</button>
-    <button id="btnEn" type="button">EN</button>
-  `;
-  document.body.appendChild(wrap);
-  const btnAr = document.getElementById('btnAr');
-  const btnEn = document.getElementById('btnEn');
-  if(lang === 'ar') btnAr.classList.add('active'); else btnEn.classList.add('active');
-  btnAr.addEventListener('click', ()=>setLang('ar'));
-  btnEn.addEventListener('click', ()=>setLang('en'));
-})();
-</script>
-
+        langToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            localStorage.setItem('aldeeb_lang', currentLang);
+            updateView(currentLang);
+        });
+    </script>
 </body>
-
 </html>
