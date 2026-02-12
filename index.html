@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aldeeb - حوّل فوضى الطلبات إلى متجر احترافي</title>
-    <meta name="description" content="تطبيق Aldeeb: أنشئ صفحة لمتجرك خلال دقائق، نظّم الطلبات، وشارك الرابط مع زبائنك. حل مثالي للمتاجر والمشاريع المنزلية.">
+    <title>Aldeeb - Store Controller</title>
+    <meta name="description" content="Aldeeb App: Create your store page in minutes, organize orders, and share the link. Perfect for shops and home businesses.">
     <link rel="icon" href="assets/favicon-32x32.png" type="image/x-icon">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,17 +14,16 @@
 
     <style>
         :root {
-            --primary: #2563EB;      /* أزرق حيوي حديث */
+            --primary: #2563EB;
             --primary-dark: #1E40AF;
-            --secondary: #10B981;    /* أخضر للنجاح والواتساب */
-            --accent: #F59E0B;       /* برتقالي للانتباه */
+            --secondary: #10B981;
+            --accent: #F59E0B;
             --dark: #1F2937;
             --gray: #6B7280;
             --light: #F3F4F6;
             --white: #FFFFFF;
             --radius: 16px;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,6 +35,16 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
+
+        /* Bilingual Logic */
+        [lang="en"] .lang-ar { display: none !important; }
+        [lang="ar"] .lang-en { display: none !important; }
+        
+        html[dir="ltr"] { text-align: left; }
+        html[dir="ltr"] .chat-bubble { border-left: none; border-right: 5px solid var(--secondary); border-radius: 20px 20px 0 20px; }
+        html[dir="ltr"] .chat-bubble::before { right: auto; left: 0; }
+        html[dir="ltr"] .pain-item { flex-direction: row-reverse; } /* Keep icon on correct side */
+        html[dir="ltr"] .fa-arrow-left { transform: rotate(180deg); }
 
         a { text-decoration: none; transition: 0.3s; }
         ul { list-style: none; }
@@ -84,12 +93,14 @@
             color: var(--dark);
             font-weight: 600;
             font-size: 1rem;
+            cursor: pointer;
         }
         .nav-link:hover { color: var(--primary); }
 
         .header-actions {
             display: flex;
             gap: 10px;
+            align-items: center;
         }
 
         .btn {
@@ -119,10 +130,18 @@
         }
         .btn-outline:hover { background: var(--primary); color: white; }
 
-        .btn-success {
-            background: var(--secondary);
-            color: white;
+        /* Lang Switcher */
+        .lang-btn {
+            background: #f3f4f6;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+            margin-right: 5px;
         }
+        .lang-btn:hover { background: #e5e7eb; }
         
         /* Mobile Menu */
         .mobile-toggle { display: none; font-size: 1.5rem; background: none; border: none; cursor: pointer; }
@@ -291,7 +310,7 @@
         }
         
         .chat-bubble::before {
-            content: 'رسالة واتساب جديدة';
+            content: 'WhatsApp';
             position: absolute;
             top: -25px;
             right: 0;
@@ -404,49 +423,16 @@
                 border-top: 1px solid #eee;
             }
             .nav-menu.active { display: flex; }
-            .header-actions .btn-text { display: none; } /* Show icon only on mobile header */
-            .header-actions .btn { padding: 10px; border-radius: 50%; } /* Circle buttons on mobile header */
+            .header-actions .btn-text { display: none; }
+            .header-actions .btn { padding: 10px; border-radius: 50%; }
             
             .hero h1 { font-size: 1.8rem; }
             .pain-points { flex-direction: column; align-items: center; }
             .big-cta { width: 100%; padding: 15px; }
         }
     </style>
-
-<style>
-  .lang { display:none; }
-  .lang.active { display:block; }
-  .lang-switch {
-    position: fixed;
-    top: 14px;
-    left: 14px;
-    z-index: 9999;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  }
-  .lang-switch button{
-    border: 1px solid rgba(0,0,0,0.15);
-    background: white;
-    padding: 8px 10px;
-    border-radius: 999px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 13px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  }
-  .lang-switch button.active{
-    border-color: #2563EB;
-    color: #2563EB;
-  }
-</style>
-
 </head>
-
 <body>
-  <div class="lang lang-ar" lang="ar" dir="rtl">
-
 
     <header>
         <div class="container header-content">
@@ -456,22 +442,39 @@
             </a>
 
             <nav class="nav-menu" id="navMenu">
-                <a href="#how" class="nav-link">كيف يعمل؟</a>
-                <a href="#benefits" class="nav-link">المميزات</a>
-                <a href="#whatsapp" class="nav-link">الواتساب</a>
-                <a href="#faq" class="nav-link">الأسئلة</a>
+                <a href="#how" class="nav-link">
+                    <span class="lang-ar">كيف يعمل؟</span>
+                    <span class="lang-en">How it works?</span>
+                </a>
+                <a href="#benefits" class="nav-link">
+                    <span class="lang-ar">المميزات</span>
+                    <span class="lang-en">Features</span>
+                </a>
+                <a href="#whatsapp" class="nav-link">
+                    <span class="lang-ar">الواتساب</span>
+                    <span class="lang-en">WhatsApp</span>
+                </a>
+                <a href="#faq" class="nav-link">
+                    <span class="lang-ar">الأسئلة</span>
+                    <span class="lang-en">FAQ</span>
+                </a>
                 <a href="https://play.google.com/store/apps/details?id=com.aldeebtech.storecontroller" class="btn btn-primary mobile-full" target="_blank">
-                    <i class="fab fa-google-play"></i> تحميل التطبيق
+                    <i class="fab fa-google-play"></i> 
+                    <span class="lang-ar">تحميل التطبيق</span>
+                    <span class="lang-en">Download App</span>
                 </a>
             </nav>
 
             <div class="header-actions">
+                <button class="lang-btn" id="langToggle">En/عربي</button>
                 <button class="mobile-toggle" id="menuBtn"><i class="fas fa-bars"></i></button>
                 
-                <a href="https://admin.aldeebtech.de" class="btn btn-outline" title="لوحة الإدارة للكمبيوتر والآيفون">
-                    <i class="fas fa-desktop"></i> <span class="btn-text">دخول الويب / آيفون</span>
+                <a href="https://admin.aldeebtech.de" class="btn btn-outline" title="Admin Panel">
+                    <i class="fas fa-desktop"></i> 
+                    <span class="btn-text lang-ar">دخول الويب / آيفون</span>
+                    <span class="btn-text lang-en">Web Login / iPhone</span>
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.aldeebtech.storecontroller" class="btn btn-primary" title="تحميل من Google Play">
+                <a href="https://play.google.com/store/apps/details?id=com.aldeebtech.storecontroller" class="btn btn-primary" title="Google Play">
                     <i class="fab fa-google-play"></i> <span class="btn-text">Google Play</span>
                 </a>
             </div>
@@ -480,63 +483,104 @@
 
     <section class="hero">
         <div class="container">
-            <div class="hero-badge">✨ الحل الأذكى لأصحاب الأعمال الطموحة</div>
+            <div class="hero-badge">
+                <span class="lang-ar">✨ الحل الأذكى لأصحاب الأعمال الطموحة</span>
+                <span class="lang-en">✨ The smartest solution for ambitious businesses</span>
+            </div>
             
             <div class="pain-points">
-                <div class="pain-item"><i class="fas fa-times-circle"></i> هل تعبت من "كم السعر؟"</div>
-                <div class="pain-item"><i class="fas fa-times-circle"></i> هل تضيع الطلبات في الواتساب؟</div>
-                <div class="pain-item"><i class="fas fa-times-circle"></i> هل تخشى التعقيد التقني؟</div>
+                <div class="pain-item"><i class="fas fa-times-circle"></i> 
+                    <span class="lang-ar">هل تعبت من "كم السعر؟"</span>
+                    <span class="lang-en">Tired of "How much is this?"</span>
+                </div>
+                <div class="pain-item"><i class="fas fa-times-circle"></i> 
+                    <span class="lang-ar">هل تضيع الطلبات في الواتساب؟</span>
+                    <span class="lang-en">Orders getting lost in chat?</span>
+                </div>
+                <div class="pain-item"><i class="fas fa-times-circle"></i> 
+                    <span class="lang-ar">هل تخشى التعقيد التقني؟</span>
+                    <span class="lang-en">Afraid of technical complexity?</span>
+                </div>
             </div>
 
             <h1>
-                نطمئنك، مع Aldeeb الأمر أسهل.<br>
-                <span>حوّل منتجاتك إلى متجر احترافي فوراً</span>
+                <span class="lang-ar">نطمئنك، مع Aldeeb الأمر أسهل.<br><span>حوّل منتجاتك إلى متجر احترافي فوراً</span></span>
+                <span class="lang-en">Relax, Aldeeb makes it easier.<br><span>Turn your products into a pro store instantly</span></span>
             </h1>
 
             <p class="hero-solution">
-                بدلاً من فوضى الرسائل، امنح زبائنك <strong>رابط واحد</strong> يحتوي على كل منتجاتك،
-                واستقبل الطلبات جاهزة ومنظمة 100% على واتساب.
+                <span class="lang-ar">بدلاً من فوضى الرسائل، امنح زبائنك <strong>رابط واحد</strong> يحتوي على كل منتجاتك، واستقبل الطلبات جاهزة ومنظمة 100% على واتساب.</span>
+                <span class="lang-en">Instead of chaotic messages, give your customers <strong>one link</strong> with all your products, and receive 100% organized orders on WhatsApp.</span>
             </p>
 
             <div class="hero-bullets">
-                <div><i class="fas fa-check check-icon"></i> تنظيم تلقائي للطلبات</div>
-                <div><i class="fas fa-check check-icon"></i> رابط واحد لكل منتجاتك</div>
-                <div><i class="fas fa-check check-icon"></i> يدعم 4 لغات عالمية</div>
-                <div><i class="fas fa-check check-icon"></i> مناسب للمطاعم، المتاجر، والخدمات</div>
+                <div><i class="fas fa-check check-icon"></i> <span class="lang-ar">تنظيم تلقائي للطلبات</span><span class="lang-en">Auto-organized orders</span></div>
+                <div><i class="fas fa-check check-icon"></i> <span class="lang-ar">رابط واحد لكل منتجاتك</span><span class="lang-en">One link for all products</span></div>
+                <div><i class="fas fa-check check-icon"></i> <span class="lang-ar">يدعم 4 لغات عالمية</span><span class="lang-en">Supports 4 languages</span></div>
+                <div><i class="fas fa-check check-icon"></i> <span class="lang-ar">مناسب للمطاعم والمتاجر</span><span class="lang-en">Great for shops & restaurants</span></div>
             </div>
 
             <a href="https://admin.aldeebtech.de" class="btn big-cta">
-                جرّب مجانًا الآن <i class="fas fa-arrow-left" style="margin-right: 10px;"></i>
+                <span class="lang-ar">جرّب مجانًا الآن</span>
+                <span class="lang-en">Try for Free Now</span>
+                <i class="fas fa-arrow-left" style="margin: 0 10px;"></i>
             </a>
             
             <div class="cta-subtext">
-                <span><i class="fas fa-bolt" style="color: var(--accent);"></i> إعداد خلال دقائق</span>
-                <span><i class="fas fa-ban" style="color: #EF4444;"></i> بدون تعقيد</span>
+                <span><i class="fas fa-bolt" style="color: var(--accent);"></i> 
+                    <span class="lang-ar">إعداد خلال دقائق</span>
+                    <span class="lang-en">Setup in minutes</span>
+                </span>
+                <span><i class="fas fa-ban" style="color: #EF4444;"></i> 
+                    <span class="lang-ar">بدون تعقيد</span>
+                    <span class="lang-en">No complexity</span>
+                </span>
             </div>
         </div>
     </section>
 
     <section id="how" class="section">
         <div class="container">
-            <h2 class="section-title">كيف يعمل؟ بسيطة جداً</h2>
+            <h2 class="section-title">
+                <span class="lang-ar">كيف يعمل؟ بسيطة جداً</span>
+                <span class="lang-en">How it works? Very simple</span>
+            </h2>
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">1</div>
                     <div class="step-icon"><i class="fas fa-store"></i></div>
-                    <h3>أنشئ متجرك</h3>
-                    <p>سجّل حسابك خلال ثوانٍ سواء عبر التطبيق أو الموقع.</p>
+                    <h3>
+                        <span class="lang-ar">أنشئ متجرك</span>
+                        <span class="lang-en">Create Store</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">سجّل حسابك خلال ثوانٍ سواء عبر التطبيق أو الموقع.</span>
+                        <span class="lang-en">Register your account in seconds via app or web.</span>
+                    </p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
                     <div class="step-icon"><i class="fas fa-camera"></i></div>
-                    <h3>أضف منتجاتك</h3>
-                    <p>ارفع الصور، حدد الأسعار، وأضف التفاصيل والعروض.</p>
+                    <h3>
+                        <span class="lang-ar">أضف منتجاتك</span>
+                        <span class="lang-en">Add Products</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">ارفع الصور، حدد الأسعار، وأضف التفاصيل والعروض.</span>
+                        <span class="lang-en">Upload photos, set prices, and add details & offers.</span>
+                    </p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
                     <div class="step-icon"><i class="fas fa-share-alt"></i></div>
-                    <h3>شارك الرابط</h3>
-                    <p>ارسل رابط متجرك للزبائن واستقبل الطلبات مرتبة.</p>
+                    <h3>
+                        <span class="lang-ar">شارك الرابط</span>
+                        <span class="lang-en">Share Link</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">ارسل رابط متجرك للزبائن واستقبل الطلبات مرتبة.</span>
+                        <span class="lang-en">Send the link to customers and get sorted orders.</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -545,29 +589,58 @@
     <section id="whatsapp" class="section wa-section">
         <div class="container wa-container">
             <div class="wa-text">
-                <h2 style="font-size: 2rem; margin-bottom: 20px; color: var(--dark);">طلبات مرتّبة توصلك جاهزة</h2>
+                <h2 style="font-size: 2rem; margin-bottom: 20px; color: var(--dark);">
+                    <span class="lang-ar">طلبات مرتّبة توصلك جاهزة</span>
+                    <span class="lang-en">Tidy orders arrive ready</span>
+                </h2>
                 <p style="font-size: 1.1rem; color: var(--gray); margin-bottom: 25px;">
-                    لا داعي للأخذ والرد الطويل مع الزبون. Aldeeb يجمع لك الطلب، العنوان، والمجموع النهائي في رسالة واحدة جاهزة للإرسال.
+                    <span class="lang-ar">لا داعي للأخذ والرد الطويل مع الزبون. Aldeeb يجمع لك الطلب، العنوان، والمجموع النهائي في رسالة واحدة جاهزة للإرسال.</span>
+                    <span class="lang-en">No more long back-and-forth. Aldeeb collects the order, address, and total in one ready-to-send message.</span>
                 </p>
                 <ul style="margin-bottom: 30px;">
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> تقليل الأخطاء في الطلبات</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> توفير 90% من وقت المحادثات</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> احترافية أمام الزبون</li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> 
+                        <span class="lang-ar">تقليل الأخطاء في الطلبات</span>
+                        <span class="lang-en">Minimize order errors</span>
+                    </li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> 
+                        <span class="lang-ar">توفير 90% من وقت المحادثات</span>
+                        <span class="lang-en">Save 90% of chat time</span>
+                    </li>
+                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> 
+                        <span class="lang-ar">احترافية أمام الزبون</span>
+                        <span class="lang-en">Professional look</span>
+                    </li>
                 </ul>
-                <a href="https://admin.aldeebtech.de" class="btn btn-primary">ابدأ استقبال الطلبات الآن</a>
+                <a href="https://admin.aldeebtech.de" class="btn btn-primary">
+                    <span class="lang-ar">ابدأ استقبال الطلبات الآن</span>
+                    <span class="lang-en">Start getting orders now</span>
+                </a>
             </div>
             
             <div class="wa-demo">
                 <div class="chat-bubble">
-                    <span class="chat-line">👋 مرحبًا، أريد طلب جديد من متجرك:</span>
-                    <span class="chat-line">------------------</span>
-                    <span class="chat-line"><strong>1x</strong> بيتزا خضار (كبير)</span>
-                    <span class="chat-line"><strong>2x</strong> كولا بارد</span>
-                    <span class="chat-line"><strong>1x</strong> سلطة يونانية</span>
-                    <span class="chat-line">------------------</span>
-                    <span class="chat-line">📍 <strong>العنوان:</strong> شارع برلين 5، الطابق الثاني</span>
-                    <span class="chat-line">📝 <strong>ملاحظة:</strong> بدون بصل لطفا</span>
-                    <div class="chat-total">💰 المجموع الكلي: 24.50€</div>
+                    <span class="lang-ar">
+                        <span class="chat-line">👋 مرحبًا، أريد طلب جديد من متجرك:</span>
+                        <span class="chat-line">------------------</span>
+                        <span class="chat-line"><strong>1x</strong> بيتزا خضار (كبير)</span>
+                        <span class="chat-line"><strong>2x</strong> كولا بارد</span>
+                        <span class="chat-line"><strong>1x</strong> سلطة يونانية</span>
+                        <span class="chat-line">------------------</span>
+                        <span class="chat-line">📍 <strong>العنوان:</strong> شارع برلين 5، الطابق الثاني</span>
+                        <span class="chat-line">📝 <strong>ملاحظة:</strong> بدون بصل لطفا</span>
+                        <div class="chat-total">💰 المجموع الكلي: 24.50€</div>
+                    </span>
+                    <span class="lang-en">
+                        <span class="chat-line">👋 Hello, I'd like to place a new order:</span>
+                        <span class="chat-line">------------------</span>
+                        <span class="chat-line"><strong>1x</strong> Veggie Pizza (Large)</span>
+                        <span class="chat-line"><strong>2x</strong> Cola Cold</span>
+                        <span class="chat-line"><strong>1x</strong> Greek Salad</span>
+                        <span class="chat-line">------------------</span>
+                        <span class="chat-line">📍 <strong>Address:</strong> Berlin St. 5, 2nd Floor</span>
+                        <span class="chat-line">📝 <strong>Note:</strong> No onions please</span>
+                        <div class="chat-total">💰 Total Amount: 24.50€</div>
+                    </span>
                 </div>
             </div>
         </div>
@@ -575,34 +648,61 @@
 
     <section id="benefits" class="section">
         <div class="container">
-            <h2 class="section-title">ليش الناس تحب Aldeeb؟</h2>
+            <h2 class="section-title">
+                <span class="lang-ar">ليش الناس تحب Aldeeb؟</span>
+                <span class="lang-en">Why people love Aldeeb?</span>
+            </h2>
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="b-icon"><i class="fas fa-wallet"></i></div>
                     <div>
-                        <h3>أرباحك لك وحدك</h3>
-                        <p>نحن أداة تقنية فقط. 0% عمولة على مبيعاتك.</p>
+                        <h3>
+                            <span class="lang-ar">أرباحك لك وحدك</span>
+                            <span class="lang-en">Your profits are yours</span>
+                        </h3>
+                        <p>
+                            <span class="lang-ar">نحن أداة تقنية فقط. 0% عمولة على مبيعاتك.</span>
+                            <span class="lang-en">We are just a tool. 0% commission on your sales.</span>
+                        </p>
                     </div>
                 </div>
                 <div class="benefit-card">
                     <div class="b-icon"><i class="fas fa-mobile-alt"></i></div>
                     <div>
-                        <h3>إدارة من هاتفك</h3>
-                        <p>تطبيق Aldeeb يجعلك تدير كل شيء من جيبك.</p>
+                        <h3>
+                            <span class="lang-ar">إدارة من هاتفك</span>
+                            <span class="lang-en">Manage from phone</span>
+                        </h3>
+                        <p>
+                            <span class="lang-ar">تطبيق Store Controller يجعلك تدير كل شيء من جيبك.</span>
+                            <span class="lang-en">Store Controller app lets you manage everything from your pocket.</span>
+                        </p>
                     </div>
                 </div>
                 <div class="benefit-card">
                     <div class="b-icon"><i class="fas fa-shield-alt"></i></div>
                     <div>
-                        <h3>ثقة وأمان</h3>
-                        <p>جرّب الخدمة وتأكد بنفسك قبل أن تقرر.</p>
+                        <h3>
+                            <span class="lang-ar">ثقة وأمان</span>
+                            <span class="lang-en">Trust & Security</span>
+                        </h3>
+                        <p>
+                            <span class="lang-ar">جرّب الخدمة وتأكد بنفسك قبل أن تقرر.</span>
+                            <span class="lang-en">Try the service and see for yourself before deciding.</span>
+                        </p>
                     </div>
                 </div>
                 <div class="benefit-card">
                     <div class="b-icon"><i class="fas fa-globe"></i></div>
                     <div>
-                        <h3>متجر عالمي</h3>
-                        <p>واجهة تدعم العربية، الإنجليزية، الألمانية والتركية.</p>
+                        <h3>
+                            <span class="lang-ar">متجر عالمي</span>
+                            <span class="lang-en">Global Store</span>
+                        </h3>
+                        <p>
+                            <span class="lang-ar">واجهة تدعم العربية، الإنجليزية، الألمانية والتركية.</span>
+                            <span class="lang-en">Interface supports Arabic, English, German, and Turkish.</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -611,8 +711,14 @@
 
     <section class="section lang-section">
         <div class="container">
-            <h2>نتحدث لغة زبائنك</h2>
-            <p style="opacity: 0.8;">واجهة المتجر والتطبيق متاحة باللغات التالية تلقائياً</p>
+            <h2>
+                <span class="lang-ar">نتحدث لغة زبائنك</span>
+                <span class="lang-en">We speak your customers' language</span>
+            </h2>
+            <p style="opacity: 0.8;">
+                <span class="lang-ar">واجهة المتجر والتطبيق متاحة باللغات التالية تلقائياً</span>
+                <span class="lang-en">Store interface is automatically available in these languages</span>
+            </p>
             <div class="lang-grid">
                 <div class="lang-item">عربي 🇸🇦</div>
                 <div class="lang-item">English 🇺🇸</div>
@@ -624,26 +730,57 @@
 
     <section id="faq" class="section">
         <div class="container" style="max-width: 800px;">
-            <h2 class="section-title">أسئلة شائعة</h2>
+            <h2 class="section-title">
+                <span class="lang-ar">أسئلة شائعة</span>
+                <span class="lang-en">FAQ</span>
+            </h2>
             
             <div class="faq-item">
-                <div class="faq-question">هل يحتاج الزبون لتحميل تطبيق للشراء؟ <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">لا! الزبون يضغط على الرابط الخاص بك ويفتح المتجر في المتصفح مباشرة (مثل أي موقع ويب) ويطلب بدون أي تحميل.</div>
+                <div class="faq-question">
+                    <span class="lang-ar">هل يحتاج الزبون لتحميل تطبيق للشراء؟</span>
+                    <span class="lang-en">Does the customer need an app to buy?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <span class="lang-ar">لا! الزبون يضغط على الرابط الخاص بك ويفتح المتجر في المتصفح مباشرة (مثل أي موقع ويب) ويطلب بدون أي تحميل.</span>
+                    <span class="lang-en">No! The customer clicks your link and the store opens in their browser (just like a website) to order without any download.</span>
+                </div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">هل أحتاج لخبرة تقنية أو لابتوب؟ <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">أبداً. تم تصميم Aldeeb ليكون بسيطاً جداً. يمكنك إدارة كل شيء من هاتفك المحمول.</div>
+                <div class="faq-question">
+                    <span class="lang-ar">هل أحتاج لخبرة تقنية أو لابتوب؟</span>
+                    <span class="lang-en">Do I need tech skills or a laptop?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <span class="lang-ar">أبداً. تم تصميم Aldeeb ليكون بسيطاً جداً. يمكنك إدارة كل شيء من هاتفك المحمول.</span>
+                    <span class="lang-en">Never. Aldeeb is designed to be very simple. You can manage everything from your mobile phone.</span>
+                </div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">كيف تصلني الطلبات؟ <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">عندما ينهي الزبون طلبه، يتم تحويله تلقائياً إلى واتساب الخاص بك مع رسالة جاهزة تحتوي كل التفاصيل.</div>
+                <div class="faq-question">
+                    <span class="lang-ar">كيف تصلني الطلبات؟</span>
+                    <span class="lang-en">How do I receive orders?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <span class="lang-ar">عندما ينهي الزبون طلبه، يتم تحويله تلقائياً إلى واتساب الخاص بك مع رسالة جاهزة تحتوي كل التفاصيل.</span>
+                    <span class="lang-en">When the customer finishes ordering, they are redirected to your WhatsApp with a ready-made message containing all details.</span>
+                </div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">هل Aldeeb مسؤول عن التوصيل أو الضرائب؟ <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">لا، Aldeeb هو أداة تقنية لعرض المنتجات فقط. المسؤولية القانونية، الضرائب، والتوصيل هي مسؤولية صاحب المتجر بالكامل.</div>
+                <div class="faq-question">
+                    <span class="lang-ar">هل Aldeeb مسؤول عن التوصيل أو الضرائب؟</span>
+                    <span class="lang-en">Is Aldeeb responsible for delivery or taxes?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <span class="lang-ar">لا، Aldeeb هو أداة تقنية لعرض المنتجات فقط. المسؤولية القانونية، الضرائب، والتوصيل هي مسؤولية صاحب المتجر بالكامل.</span>
+                    <span class="lang-en">No, Aldeeb is just a tech tool to showcase products. Legal liability, taxes, and delivery are fully the shop owner's responsibility.</span>
+                </div>
             </div>
         </div>
     </section>
@@ -657,19 +794,49 @@
                 </div>
                 
                 <div class="footer-links">
-                    <a href="agb.html">شروط الاستخدام</a>
-                    <a href="datenschutz.html">سياسة الخصوصية</a>
-                    <a href="mailto:aldeebtech.de@gmail.com">تواصل معنا</a>
+                    <a href="agb.html">
+                        <span class="lang-ar">شروط الاستخدام</span>
+                        <span class="lang-en">Terms of Use</span>
+                    </a>
+                    <a href="datenschutz.html">
+                        <span class="lang-ar">سياسة الخصوصية</span>
+                        <span class="lang-en">Privacy Policy</span>
+                    </a>
+                    <a href="mailto:aldeebtech.de@gmail.com">
+                        <span class="lang-ar">تواصل معنا</span>
+                        <span class="lang-en">Contact Us</span>
+                    </a>
                 </div>
 
                 <div style="color: var(--gray); font-size: 0.85rem;">
-                    © 2026 Aldeeb Tech. جميع الحقوق محفوظة.
+                    © 2026 Aldeeb Tech.
+                    <span class="lang-ar">جميع الحقوق محفوظة.</span>
+                    <span class="lang-en">All rights reserved.</span>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script type="application/x-disabled">
+    <script>
+        // Language Logic
+        const langToggle = document.getElementById('langToggle');
+        
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            localStorage.setItem('aldeeb_lang', lang);
+        }
+
+        // Check stored language or default to 'ar'
+        const currentLang = localStorage.getItem('aldeeb_lang') || 'ar';
+        setLanguage(currentLang);
+
+        langToggle.addEventListener('click', () => {
+            const current = document.documentElement.lang;
+            const newLang = current === 'ar' ? 'en' : 'ar';
+            setLanguage(newLang);
+        });
+
         // Mobile Menu Logic
         const menuBtn = document.getElementById('menuBtn');
         const navMenu = document.getElementById('navMenu');
@@ -694,351 +861,5 @@
             });
         });
     </script>
-
-  </div>
-  <div class="lang lang-en" lang="en" dir="ltr">
-
-
-    <header>
-        <div class="container header-content">
-            <a href="#" class="logo">
-                <img src="assets/loggo_icon.png" alt="Aldeeb Logo">
-                Aldeeb
-            </a>
-
-            <nav class="nav-menu" id="navMenu">
-                <a href="#how" class="nav-link">How it works</a>
-                <a href="#benefits" class="nav-link">Features</a>
-                <a href="#whatsapp" class="nav-link">WhatsApp</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-                <a href="https://play.google.com/store/apps/details?id=com.aldeebtech.storecontroller" class="btn btn-primary mobile-full" target="_blank">
-                    <i class="fab fa-google-play"></i> Get the app
-                </a>
-            </nav>
-
-            <div class="header-actions">
-                <button class="mobile-toggle" id="menuBtn"><i class="fas fa-bars"></i></button>
-                
-                <a href="https://admin.aldeebtech.de" class="btn btn-outline" title="لوحة الإدارة للكمبيوتر والآيفون">
-                    <i class="fas fa-desktop"></i> <span class="btn-text">Web / iPhone login</span>
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.aldeebtech.storecontroller" class="btn btn-primary" title="تحميل من Google Play">
-                    <i class="fab fa-google-play"></i> <span class="btn-text">Google Play</span>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <div class="hero-badge">✨ The smarter way for ambitious businesses</div>
-            
-            <div class="pain-points">
-                <div class="pain-item"><i class="fas fa-times-circle"></i> Tired of “How much is it?”</div>
-                <div class="pain-item"><i class="fas fa-times-circle"></i> هل تضيع الطلبات في WhatsApp؟</div>
-                <div class="pain-item"><i class="fas fa-times-circle"></i> Afraid it will be too technical?</div>
-            </div>
-
-            <h1>
-                No worries — with Aldeeb it’s easy.<br>
-                <span>Turn your products into a professional store instantly</span>
-            </h1>
-
-            <p class="hero-solution">
-                Instead of message chaos, give your customers <strong>one link</strong> that contains all your products,
-                and receive ready, 100% organized orders on WhatsApp.
-            </p>
-
-            <div class="hero-bullets">
-                <div><i class="fas fa-check check-icon"></i> Automatic order formatting</div>
-                <div><i class="fas fa-check check-icon"></i> One link for all your products</div>
-                <div><i class="fas fa-check check-icon"></i> Supports 4 languages</div>
-                <div><i class="fas fa-check check-icon"></i> Great for restaurants, shops, and services</div>
-            </div>
-
-            <a href="https://admin.aldeebtech.de" class="btn big-cta">
-                Try it free now <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
-            </a>
-            
-            <div class="cta-subtext">
-                <span><i class="fas fa-bolt" style="color: var(--accent);"></i> Setup in minutes</span>
-                <span><i class="fas fa-ban" style="color: #EF4444;"></i> No complexity</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="how" class="section">
-        <div class="container">
-            <h2 class="section-title">How it works بسيطة جداً</h2>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <div class="step-icon"><i class="fas fa-store"></i></div>
-                    <h3>Create your store</h3>
-                    <p>Sign up in seconds using the app or the web.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <div class="step-icon"><i class="fas fa-camera"></i></div>
-                    <h3>Add your products</h3>
-                    <p>Upload photos, set prices, and add details and offers.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <div class="step-icon"><i class="fas fa-share-alt"></i></div>
-                    <h3>Share your link</h3>
-                    <p>Send your store link to customers and receive organized orders.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="whatsapp" class="section wa-section">
-        <div class="container wa-container">
-            <div class="wa-text">
-                <h2 style="font-size: 2rem; margin-bottom: 20px; color: var(--dark);">Organized orders arrive ready</h2>
-                <p style="font-size: 1.1rem; color: var(--gray); margin-bottom: 25px;">
-                    No need for long back-and-forth chats. Aldeeb Aldeeb compiles the order, address, and total into one message ready to send.
-                </p>
-                <ul style="margin-bottom: 30px;">
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Fewer order mistakes</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Save up to 90% chat time</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Look more professional</li>
-                </ul>
-                <a href="https://admin.aldeebtech.de" class="btn btn-primary">Start receiving orders now</a>
-            </div>
-            
-            <div class="wa-demo">
-                <div class="chat-bubble">
-                    <span class="chat-line">👋 Hi! I'd like to place a new order from your store:</span>
-                    <span class="chat-line">------------------</span>
-                    <span class="chat-line"><strong>1x</strong> بيتزا خضار (كبير)</span>
-                    <span class="chat-line"><strong>2x</strong> كولا بارد</span>
-                    <span class="chat-line"><strong>1x</strong> سلطة يونانية</span>
-                    <span class="chat-line">------------------</span>
-                    <span class="chat-line">📍 <strong>Address:</strong> شارع برلين 5، الطابق الثاني</span>
-                    <span class="chat-line">📝 <strong>Note:</strong> بدون بصل لطفا</span>
-                    <div class="chat-total">💰 Total: 24.50€</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="benefits" class="section">
-        <div class="container">
-            <h2 class="section-title">Why do people love Aldeeb?</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="b-icon"><i class="fas fa-wallet"></i></div>
-                    <div>
-                        <h3>Your profits are yours</h3>
-                        <p>We’re just a tool. 0% commission on your sales.</p>
-                    </div>
-                </div>
-                <div class="benefit-card">
-                    <div class="b-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <div>
-                        <h3>Manage from your phone</h3>
-                        <p>App Aldeeb Control everything from your pocket.</p>
-                    </div>
-                </div>
-                <div class="benefit-card">
-                    <div class="b-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div>
-                        <h3>Trust & security</h3>
-                        <p>Try it and decide with confidence.</p>
-                    </div>
-                </div>
-                <div class="benefit-card">
-                    <div class="b-icon"><i class="fas fa-globe"></i></div>
-                    <div>
-                        <h3>A global store</h3>
-                        <p>Interface supports Arabic, English, German, and Turkish.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section lang-section">
-        <div class="container">
-            <h2>We speak your customers’ language</h2>
-            <p style="opacity: 0.8;">The store and app are automatically available in:</p>
-            <div class="lang-grid">
-                <div class="lang-item">عربي 🇸🇦</div>
-                <div class="lang-item">English 🇺🇸</div>
-                <div class="lang-item">Deutsch 🇩🇪</div>
-                <div class="lang-item">Türkçe 🇹🇷</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="section">
-        <div class="container" style="max-width: 800px;">
-            <h2 class="section-title">Frequently asked questions</h2>
-            
-            <div class="faq-item">
-                <div class="faq-question">Does the customer need to install an app to buy? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">No. Customers open your link in their browser (like any website) and order without installing anything.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Do I need technical skills or a laptop? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">Not at all. Aldeeb is designed to be very simple. You can manage everything from your phone.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">How do I receive orders? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">When a customer finishes an order, it opens your WhatsApp with a ready message containing all details.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Is Aldeeb responsible for delivery or taxes? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">No. Aldeeb is only a technical tool to display products. Legal responsibility, taxes, and delivery are the store owner’s responsibility.</div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <img src="assets/loggo_icon.png" alt="Logo" style="width: 30px;">
-                    <strong>Aldeeb</strong>
-                </div>
-                
-                <div class="footer-links">
-                    <a href="agb.html">Terms of Use</a>
-                    <a href="datenschutz.html">Privacy Policy</a>
-                    <a href="mailto:aldeebtech.de@gmail.com">Contact</a>
-                </div>
-
-                <div style="color: var(--gray); font-size: 0.85rem;">
-                    © 2026 Aldeeb Tech. All rights reserved.
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script type="application/x-disabled">
-        // Mobile Menu Logic
-        const menuBtn = document.getElementById('menuBtn');
-        const navMenu = document.getElementById('navMenu');
-        
-        menuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = menuBtn.querySelector('i');
-            if(navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-
-        // FAQ Logic
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', () => {
-                const parent = item.parentElement;
-                parent.classList.toggle('active');
-            });
-        });
-    </script>
-
-  </div>
-
-<script type="application/x-disabled">
-(function(){
-  function getLang(){
-    const url = new URL(window.location.href);
-    const q = url.searchParams.get('lang');
-    if(q === 'en' || q === 'ar') return q;
-    const ls = localStorage.getItem('lang');
-    if(ls === 'en' || ls === 'ar') return ls;
-    return 'ar';
-  }
-  function setLang(lang){
-    localStorage.setItem('lang', lang);
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', lang);
-    window.location.replace(url.toString());
-  }
-  const lang = getLang();
-  document.documentElement.lang = lang;
-  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-
-  // Show correct block
-  const ar = document.querySelector('.lang-ar');
-  const en = document.querySelector('.lang-en');
-  if(ar && en){
-    (lang === 'ar' ? ar : en).classList.add('active');
-  }
-
-  // Update links to keep lang param
-  document.querySelectorAll('a[href]').forEach(a=>{
-    const href = a.getAttribute('href');
-    if(!href) return;
-    if(href.startsWith('mailto:') || href.startsWith('http') || href.startsWith('#') || href.startsWith('javascript:')) return;
-    if(href.includes('?lang=')) return;
-    if(href.endsWith('.html') || href.includes('.html#') || href.includes('.html?') || href.startsWith('./') || href.indexOf('/')===-1){
-      try{
-        const u = new URL(href, window.location.href);
-        u.searchParams.set('lang', lang);
-        a.setAttribute('href', u.pathname.split('/').pop() + '?' + u.searchParams.toString() + (u.hash||''));
-      }catch(e){}
-    }
-  });
-
-  // Render switch UI
-  const wrap = document.createElement('div');
-  wrap.className = 'lang-switch';
-  wrap.innerHTML = `
-    <button id="btnAr" type="button">عربي</button>
-    <button id="btnEn" type="button">EN</button>
-  `;
-  document.body.appendChild(wrap);
-  const btnAr = document.getElementById('btnAr');
-  const btnEn = document.getElementById('btnEn');
-  if(lang === 'ar') btnAr.classList.add('active'); else btnEn.classList.add('active');
-  btnAr.addEventListener('click', ()=>setLang('ar'));
-  btnEn.addEventListener('click', ()=>setLang('en'));
-})();
-</script>
-
-
-<script>
-(function(){
-  function initFaq(){
-    const active = document.querySelector('.lang.active');
-    if(!active) return;
-    active.querySelectorAll('.faq-question').forEach(q=>{
-      // avoid double-binding
-      if(q.dataset.bound === '1') return;
-      q.dataset.bound = '1';
-      q.addEventListener('click', ()=>{
-        const item = q.closest('.faq-item');
-        if(!item) return;
-        const ans = item.querySelector('.faq-answer');
-        const isOpen = ans && ans.style.display === 'block';
-        // close others (optional)
-        active.querySelectorAll('.faq-answer').forEach(a=>{ a.style.display = 'none'; });
-        if(ans) ans.style.display = isOpen ? 'none' : 'block';
-      });
-    });
-  }
-
-  // init on load
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initFaq);
-  } else {
-    initFaq();
-  }
-
-  // re-init when language changes via localStorage + reload (safe), but also in case without reload
-  window.addEventListener('storage', (e)=>{ if(e.key==='lang') initFaq(); });
-})();
-</script>
-
 </body>
 </html>
