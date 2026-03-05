@@ -444,6 +444,48 @@
             .pain-points { flex-direction: column; align-items: center; }
             .big-cta { width: 100%; padding: 15px; }
         }
+        /* Desktop/Mobile Umschaltung */
+.nav-mobile { display: none; }
+.nav-desktop { display: inline-flex; }
+.header-desktop { display: inline-flex; }
+
+@media (max-width: 900px) {
+  .nav-desktop { display: none !important; }
+  .header-desktop { display: none !important; }
+  .nav-mobile { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+  .nav-cta { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+}
+
+/* Dropdown (details/summary) */
+.nav-more { position: relative; }
+.nav-more > summary { list-style: none; cursor: pointer; }
+.nav-more > summary::-webkit-details-marker { display: none; }
+
+.nav-more-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 220px;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+  z-index: 999;
+}
+
+.nav-more[open] .nav-more-panel { display: flex; flex-direction: column; gap: 4px; }
+
+@media (max-width: 900px) {
+  .nav-more-panel {
+    position: static;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    min-width: auto;
+  }
+}
     </style>
 </head>
 <body>
