@@ -448,76 +448,116 @@
 </head>
 <body>
 
-    <header>
-        <div class="container header-content">
-            <a href="#" class="logo">
-                <img src="assets/loggo_icon.png" alt="Aldeeb Logo">
-                Aldeeb
-            </a>
+    <header class="site-header">
+  <div class="container header-content">
+    <a href="#" class="logo" aria-label="Aldeeb">
+      <img src="assets/loggo_icon.png" alt="Aldeeb Logo">
+      <span class="logo-text">Aldeeb</span>
+    </a>
 
-            <nav class="nav-menu" id="navMenu">
-                <a href="#how" class="nav-link">
-                    <span class="lang-ar">كيف يعمل؟</span>
-                    <span class="lang-en">How it works?</span>
-                </a>
-                <a href="#benefits" class="nav-link">
-                    <span class="lang-ar">المميزات</span>
-                    <span class="lang-en">Features</span>
-                </a>
-                <a href="#whatsapp" class="nav-link">
-                    <span class="lang-ar">الواتساب</span>
-                    <span class="lang-en">WhatsApp</span>
-                </a>
-                <a href="#pricing" class="nav-link">
-  <span class="lang-ar">السعر</span>
-  <span class="lang-en">Pricing</span>
-</a>
-<a href="#demo" class="nav-link">
-  <span class="lang-ar">مثال متجر</span>
-  <span class="lang-en">Demo</span>
-</a>
-                <a href="#faq" class="nav-link">
-                    <span class="lang-ar">الأسئلة</span>
-                    <span class="lang-en">FAQ</span>
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.aldeebtech.storecontroller" class="btn btn-primary mobile-full" target="_blank">
-                    <i class="fab fa-google-play"></i> 
-                    <span class="lang-ar">تحميل التطبيق</span>
-                    <span class="lang-en">Download App</span>
-                </a>
-            </nav>
+    <nav class="nav-menu" id="navMenu">
+      <!-- Desktop: kurz -->
+      <a href="#benefits" class="nav-link nav-desktop">
+        <span class="lang-ar">المميزات</span>
+        <span class="lang-en">Features</span>
+      </a>
 
-            <div class="header-actions">
-                <button class="lang-btn" id="langToggle">En/عربي</button>
-                <button class="mobile-toggle" id="menuBtn"><i class="fas fa-bars"></i></button>
-                
-                <a href="https://admin.aldeebtech.de" class="btn btn-outline" title="Admin Panel">
-                    <i class="fas fa-desktop"></i> 
-                    <span class="btn-text lang-ar">دخول الويب / آيفون</span>
-                    <span class="btn-text lang-en">Web Login / iPhone</span>
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.aldeebtech.storecontroller" class="btn btn-primary" title="Google Play">
-                    <i class="fab fa-google-play"></i> <span class="btn-text">Google Play</span>
-                </a>
-            </div>
+      <a href="#pricing" class="nav-link nav-desktop">
+        <span class="lang-ar">السعر</span>
+        <span class="lang-en">Pricing</span>
+      </a>
+
+      <a href="#whatsapp" class="nav-link nav-desktop">
+        <span class="lang-ar">الواتساب</span>
+        <span class="lang-en">WhatsApp</span>
+      </a>
+
+      <details class="nav-more nav-desktop">
+        <summary class="nav-link">
+          <span class="lang-ar">المزيد</span>
+          <span class="lang-en">More</span>
+          <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </summary>
+        <div class="nav-more-panel">
+          <a href="#how" class="nav-link">
+            <span class="lang-ar">كيف يعمل؟</span>
+            <span class="lang-en">How it works?</span>
+          </a>
+          <a href="#demo" class="nav-link">
+            <span class="lang-ar">مثال متجر</span>
+            <span class="lang-en">Demo</span>
+          </a>
+          <a href="#faq" class="nav-link">
+            <span class="lang-ar">الأسئلة</span>
+            <span class="lang-en">FAQ</span>
+          </a>
         </div>
-        <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Aldeeb",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Android, Web",
-  "description": "أنشئ متجرك الإلكتروني خلال دقائق، اعرض منتجاتك، استقبل الطلبات، وشارك رابط المتجر.",
-  "url": "https://www.aldeebtech.de/",
-  "publisher": {
-    "@type": "Organization",
-    "name": "AldeebTech",
-    "url": "https://www.aldeebtech.de/"
-  }
-}
-</script>
-    </header>
+      </details>
+
+      <!-- Mobile: كامل -->
+      <div class="nav-mobile">
+        <a href="#how" class="nav-link">
+          <span class="lang-ar">كيف يعمل؟</span>
+          <span class="lang-en">How it works?</span>
+        </a>
+        <a href="#benefits" class="nav-link">
+          <span class="lang-ar">المميزات</span>
+          <span class="lang-en">Features</span>
+        </a>
+        <a href="#whatsapp" class="nav-link">
+          <span class="lang-ar">الواتساب</span>
+          <span class="lang-en">WhatsApp</span>
+        </a>
+        <a href="#pricing" class="nav-link">
+          <span class="lang-ar">السعر</span>
+          <span class="lang-en">Pricing</span>
+        </a>
+        <a href="#demo" class="nav-link">
+          <span class="lang-ar">مثال متجر</span>
+          <span class="lang-en">Demo</span>
+        </a>
+        <a href="#faq" class="nav-link">
+          <span class="lang-ar">الأسئلة</span>
+          <span class="lang-en">FAQ</span>
+        </a>
+
+        <div class="nav-cta">
+          <a href="https://admin.aldeebtech.de" class="btn btn-outline mobile-full" title="Admin Panel">
+            <i class="fas fa-desktop"></i>
+            <span class="lang-ar">دخول الويب / آيفون</span>
+            <span class="lang-en">Web Login / iPhone</span>
+          </a>
+
+          <a href="https://play.google.com/store/apps/details?id=com.aldeebtech.storecontroller"
+             class="btn btn-primary mobile-full" target="_blank" rel="noopener">
+            <i class="fab fa-google-play"></i>
+            <span class="lang-ar">تحميل التطبيق</span>
+            <span class="lang-en">Download App</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <button class="lang-btn" id="langToggle">En/عربي</button>
+      <button class="mobile-toggle" id="menuBtn" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <a href="https://admin.aldeebtech.de" class="btn btn-outline header-desktop" title="Admin Panel">
+        <i class="fas fa-desktop"></i>
+        <span class="btn-text lang-ar">دخول الويب / آيفون</span>
+        <span class="btn-text lang-en">Web Login / iPhone</span>
+      </a>
+
+      <a href="https://play.google.com/store/apps/details?id=com.aldeebtech.storecontroller"
+         class="btn btn-primary header-desktop" target="_blank" rel="noopener" title="Google Play">
+        <i class="fab fa-google-play"></i>
+        <span class="btn-text">Google Play</span>
+      </a>
+    </div>
+  </div>
+</header>
 
     <section class="hero">
         <div class="container">
